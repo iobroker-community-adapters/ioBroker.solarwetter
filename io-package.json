@@ -48,6 +48,7 @@
                 "desc":  "Solarleistung bei klarem Himmel",
                 "type":  "number",
                 "unit":  "kWh/kWp",
+                "role" : "value",
                 "read":  true,
                 "write": false
             },
@@ -61,6 +62,7 @@
                 "desc":  "minimale Solarleistung bei jetzigem Himmel",
                 "type":  "number",
                 "unit":  "kWh/kWp",
+                "role" : "value",
                 "read":  true,
                 "write": false
             },
@@ -74,6 +76,7 @@
                 "desc":  "maximale Solarleistung bei jetzigem Himmel",
                 "type":  "number",
                 "unit":  "kWh/kWp",
+                "role" : "value",
                 "read":  true,
                 "write": false
             },
@@ -86,6 +89,7 @@
                 "name":  "Solar-Wetter.com Datum der letzten Aktualisierung",
                 "desc":  "letzte Aktualisierung der Webseite",
                 "type":  "string",
+                "role" : "date",
                 "read":  true,
                 "write": false
             },
