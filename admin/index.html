@@ -1,0 +1,93 @@
+<html>
+
+<!-- these 4 files always have to be included -->
+<link rel="stylesheet" type="text/css" href="../../lib/css/themes/jquery-ui/redmond/jquery-ui.min.css"/>
+<link rel="stylesheet" type="text/css" href="../../lib/css/jquery.multiselect-1.13.css"/>
+
+<script type="text/javascript" src="../../lib/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../../socket.io/socket.io.js"></script>
+<script type="text/javascript" src="../../lib/js/jquery-ui-1.10.3.full.min.js"></script>
+
+<!-- these two file always have to be included -->
+<link rel="stylesheet" type="text/css" href="../../css/adapter.css"/>
+<script type="text/javascript" src="../../js/translate.js"></script>
+<script type="text/javascript" src="../../js/adapter-settings.js"></script>
+<!-- List of Postcodes-->
+<script type="text/javascript" src="plz.js"></script>
+
+<style>
+    #config {
+        font-size: smaller;	
+    }
+    .headline {
+    	padding-top: 20px;
+    	padding-left: 10px;
+    }
+    .table_header {
+        background-color: blue;
+        color: white;
+    }
+    .ip {
+        width: 150px;
+        text-align: right;
+    }
+</style>
+
+<script type="text/javascript">
+	systemDictionary = {
+            "solarwetter Adapter settings": {
+                "en": "solarwetter Adapter settings",
+                "de": "solarwetter Adapter Einstellungen",
+                "ru": "Настройки solarwetter Adapter"
+            },
+            "Postcode:": {
+                "en": "Post code area:",
+                "de": "Postleitzahlenbereich:",
+                "ru": "Translate please: Postleitzahlenbereich:"
+            },
+            "Description": {
+                "en": "Choose your area by selecting the post code",
+                "de": "Bitte wählen sie den gewünschten PLZ-Bereich aus",
+                "ru": "Translate to ru please: Choose your area by selecting the post code"
+            }
+            "Copyright": {
+                "en": "Data provided by solar-wetter.com",
+                "de": "Daten von solar-wetter.com",
+                "ru": "Translate to ru please: Data provided by solar-wetter.com"
+            }
+    };
+
+    function load(settings, onChange) {
+        $('#location').val(settings.location).change(onChange).keyup(onChange);
+        //$('#location').val(settings.location).change(onChange);
+        onChange(false);
+    }
+        
+    function save(callback) {
+        callback({location: $('#location').val()});
+    }
+    
+</script>
+
+<div id="adapter-container">
+    <table style="width: 100%">
+    	<tr>
+            <td><img src="solarwetter.png"></td>
+            <td class="headline"><h3 class="translate">solarwetter Adapter settings</h3></td>
+        </tr>
+    </table>
+    <h4 class="translate" style="width: calc(100% - 10px)">Postcode</h4>
+    <table id="config" style="width: calc(100% - 5px)">
+        <tr>
+            <td class="translate">Description</td>
+        </tr>
+        <tr>
+            <td><input type="text" class="value" id="location" size = "3"/></td>
+        </tr>
+        <tr>    
+            <td class="translate" style="color: gray; font-style: italic; font-size: smaller">Copyright</td>
+        </tr>
+        
+    </table>
+</div>
+</html>
