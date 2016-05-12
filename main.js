@@ -43,8 +43,6 @@ var idClearSky =   'forecast.clearSky',
 
 var link = 'http://www.vorhersage-plz-bereich.solar-wetter.com/html/' + adapter.config.location + '.html';
 
-var request = require('request');
-
 function erstes_erstesAuftauchen(body,text1,text2) {
     var start = body.indexOf(text1) + text1.length;
     var ende = body.indexOf(text2);
