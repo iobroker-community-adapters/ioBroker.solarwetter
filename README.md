@@ -74,7 +74,6 @@ solarwetter.0.forecast.home.__Leistung__ (*value*)
 * (pix) first release
 
 ## ToDo
-* post code in settings load correct value
 * beautify icon
 * Translation of Datapoints
 * Russian translation of settings window
