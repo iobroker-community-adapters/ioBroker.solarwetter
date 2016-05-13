@@ -16,12 +16,17 @@ Bei Eingabe der Leistung der eigenen Solaranlage errechnet der Adapter auch die 
 Translate!!!!
 
 ## Einstellungen / Configuration
-### Region
+### Standort / Location
 Örtlichkeit durch Auswahl des Postleitzahlenbereichs bestimmen
 Gesamtleistung der eigenen Solaranlage zur Berechnung der Energieerzeugung
 
 Choose your region by selecting from the list of post codes.
 Type in power of your solar plant to calculate energy output.
+
+### Solaranlage / Solar plant
+Hier kann die Gesamtleistung der eigenen Solaranlage zur Bechnung der vorraussichtlich erzeugten Energiemenge eingegeben werden (auch Dezimalzahlen möglich).
+
+Put in the total power of your solar plant to calculate the daily forecast for energy production (decimal separators possible)
 
 ![alt text](img/solarwetterSettingScreenshot.jpg "Screenshot Settings")
 
