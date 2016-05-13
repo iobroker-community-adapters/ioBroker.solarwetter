@@ -59,11 +59,10 @@
         function load(settings, onChange) {
             $('#location').val(settings.location).change(onChange).keyup(onChange);
                         
-            var text = '<select class="value" id="location" name="PLZ-Liste">\n';
-            for /*(var p; p <= plz.length; p++)*/ (var p in plz) {
+            var text = '';
+            for (var p in plz) {
                 text += '<option value="' + plz[p] + '">' + plz[p] + '</option>\n';
             }
-            text += '</select>\n';
             $('#areacodelist').append(text);
             
             onChange(false);
@@ -84,8 +83,12 @@
         <h4 class="translate" style="width: calc(100% - 10px)">Postcode</h4>
         <table style="width: calc(100% - 5px)">
             <tr>
-                <td id="areacodelist">
-                    <!-- hier wird Inhalt vom Skript eingefügt -->
+                <td>
+                    <select class="value" id="location">
+                        <div id="areacodelist" class="fillskript">
+                        <!-- areacodelist from plz.js will be pasted here by skript -->
+                        </div>
+                    </select>
                 </td>
             </tr>
         </table>
