@@ -15,7 +15,7 @@ var adapter = utils.adapter({
 var plz;
 var link;
 
-var logging = true;
+var logging = false;
 
 var idClearSky =   'forecast.clearSky',
     idRealSkyMin = 'forecast.realSky_min',
