@@ -61,14 +61,11 @@
         }
     
         function load(settings, onChange) {
-            var select_size = plz.length + 1;
-            console.log(select_size);
             var text = '';
             for (var p in plz) {
                 text += '<option value="' + plz[p] + '">' + plz[p] + '</option>\n';
             }
             
-            console.log(text);
             $('#config').append(text);
             
             onChange(false);

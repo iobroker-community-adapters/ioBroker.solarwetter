@@ -12,6 +12,9 @@ var adapter = utils.adapter({
     useFormatDate:  true
 });
 
+var plz;
+var link;
+
 adapter.on('ready', function () {
     adapter.getForeignObject('system.config', function (err, data) {
         if (data && data.common) {
@@ -32,16 +35,19 @@ adapter.on('ready', function () {
 
 
 function readSettings() {
-    if (adapter.config.location === undefined || adapter.config.location === 0) adapter.log.info('Keine Region ausgewählt'); // Translate!
-    else adapter.log.info('Postcode: '+ adapter.config.location);
+    plz = adapter.config.location;
+    if (plz === undefined || plz === 0) {
+        adapter.log.info('Keine Region ausgewählt'); // Translate!
+        
+    } else adapter.log.info('Postcode: '+ plz);
     // Test
     adapter.getObject('forecast', function (err, obj) {
-        if (!obj || !obj.common || obj.common.name !== 'forecast ' + adapter.config.location) {
+        if (!obj || !obj.common || obj.common.name !== 'forecast ' + plz) {
             adapter.setObject('forecast', {
                 type: 'channel',
                 role: 'forecast',
                 common: {
-                    name: 'Solar-Wetter.com forecast ' + adapter.config.location
+                    name: 'Solar-Wetter.com forecast ' + plz
                 }
             });
         }
@@ -57,7 +63,8 @@ var idClearSky =   'forecast.clearSky',
     idRealSkyMax = 'forecast.realSky_max',
     idDatum =      'forecast.Datum';
 
-var link = 'http://www.vorhersage-plz-bereich.solar-wetter.com/html/' + adapter.config.location + '.html';
+
+
 
 function erstes_erstesAuftauchen(body,text1,text2) {
     var start = body.indexOf(text1) + text1.length;
@@ -165,6 +172,11 @@ function findeDatum (body) {
 }
 
 function leseWebseite () {
+    var link = 'http://www.vorhersage-plz-bereich.solar-wetter.com/html/' + plz + '.html';
+    if (!plz || plz.length < 3) {
+        adapter.log.warn('Kein PLZ-Bereich festgelegt. Adapter wird angehalten');
+        adapter.stop;
+    }
     try {
         request(link, function (error, response, body) {
             if (!error && response.statusCode == 200) {              // kein Fehler, Inhalt in body
