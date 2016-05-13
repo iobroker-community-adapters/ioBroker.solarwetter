@@ -56,22 +56,20 @@
             onChange(false);
         }
  */     
-        function save(callback) {
-            callback({location: $('#location').val()});
-        }
-    
         function load(settings, onChange) {
             var text = '';
-            for (var p in plz) {
+            for (var p; p <= plz.length; p++) {
                 text += '<option value="' + plz[p] + '">' + plz[p] + '</option>\n';
             }
-            
+            text += '</select>\n';
             $('#config').append(text);
             
             onChange(false);
         }
-    
-    
+        
+        function save(callback) {
+            callback({location: $('#location').val()});
+        }
     </script>
 
     <div id="adapter-container">
@@ -87,7 +85,7 @@
                 <td id="config">
                     <select class="value" id="location" name="PLZ-Liste">
                     <!-- hier wird Inhalt vom Skript eingefügt -->
-                    </select>
+                    
                 </td>
             </tr>
         </table>

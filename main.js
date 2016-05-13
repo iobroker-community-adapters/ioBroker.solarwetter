@@ -68,9 +68,6 @@ var idClearSky =   'forecast.clearSky',
     idRealSkyMax = 'forecast.realSky_max',
     idDatum =      'forecast.Datum';
 
-
-
-
 function erstes_erstesAuftauchen(body,text1,text2) {
     var start = body.indexOf(text1) + text1.length;
     var ende = body.indexOf(text2);
