@@ -62,12 +62,13 @@
     
         function load(settings, onChange) {
             var select_size = plz.length + 1;
-            var text = '<select name="PLZ-Liste" size="' +  select_size + '">\n';
+            adapter.log.info(select_size);
+            var text = '<tr>\n<select name="PLZ-Liste" size="' +  select_size + '">\n';
             for (var p in plz) {
-                text += '<option>' + plz[p] + '</option>\n';
+                text += '<option value="' + plz[p] + '">' + plz[p] + '</option>\n';
             }
-            text += '</select>';
-        
+            text += '</select>\n</tr>\n';
+            adapter.log.info(text);
             $('#config').append(text);
             
             onChange(false);
