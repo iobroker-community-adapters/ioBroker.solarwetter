@@ -64,7 +64,7 @@
             var select_size = plz.length + 1;
             adapter.log.info(select_size);
             var text = '<tr>\n<select name="PLZ-Liste" size="' +  select_size + '">\n';
-            for (var p in plz) {
+            for (var p; p <= select_size; p++) {
                 text += '<option value="' + plz[p] + '">' + plz[p] + '</option>\n';
             }
             text += '</select>\n</tr>\n';
