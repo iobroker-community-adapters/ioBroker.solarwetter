@@ -53,6 +53,9 @@ solarwetter.0.forecast.home.__Leistung__ (*value*)
 
 
 ## Changelog
+### 0.0.4 (2016-05-13)
+* (pix) Appearance of settings window
+
 ### 0.0.3 (2016-05-13)
 * (pix) Calculates power of own solar plant
 
@@ -65,6 +68,8 @@ solarwetter.0.forecast.home.__Leistung__ (*value*)
 ## ToDo
 * post code in settings load correct value
 * beautify icon
+* Translation of Datapoints
+* Russian translation of settings window
 
 ## License
 

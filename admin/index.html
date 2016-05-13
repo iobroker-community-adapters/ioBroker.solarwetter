@@ -27,10 +27,17 @@
         .subline {
         
         }
-        .copyright {
+        .inputvalue {
+            width: 20%;
+            text-align: right;
+        }
+        .info {
+           padding: 5px 0 0 0;
            color: gray;
            font-style: italic;
-           font-size: smaller;
+           font-size: 60%;
+           text-align: right;
+           width: 50%;
         }
     </style>
 
@@ -42,13 +49,13 @@
                 "ru": "Настройки solarwetter Adapter"
             },
             "Postcode": {
-                "en": "Post code area",
-                "de": "Postleitzahlenbereich",
-                "ru": "Translate please: Postleitzahlenbereich"
+                "en": "Location",
+                "de": "Standort",
+                "ru": "Translate to russian, please: Location"
             },
             "Description": {
                 "en": "Choose your area by selecting the post code",
-                "de": "Bitte wählen sie den gewünschten PLZ-Bereich aus",
+                "de": "Gewünschter Postleitzahlenbereich",
                 "ru": "Translate to ru please: Choose your area by selecting the post code"
             },
             "Copyright": {
@@ -97,24 +104,25 @@
         <h4 class="translate subline" style="width: calc(100% - 10px)">Postcode</h4>
         <table style="width: calc(100% - 5px)">
             <tr>
-                <td>
+                <td class="translate description">Description</td>
+                <td class="translate inputvalue">
                     <select class="value" id="location">
                         <optgroup label='Region' id="areacodelist">
                         <!-- areacodelist from plz.js will be pasted here by skript -->
                         </optgroup>
                     </select>
-                </td> 
-                <td class="translate description">Description</td>
+                </td>
             </tr>
-            <tr>    
-                <td class="translate copyright">Copyright</td>
+            <tr>
+                <td></td>
+                <td class="info translate">Copyright</td>
             </tr>
         </table>
         <h4 class="translate subline" style="width: calc(100% - 10px)">Device</h4>
         <table id="owndevice" style="margin-top: 20px; width: calc(100% - 5px)">
             <tr>
-                <td ><input type="text" id="power" class="value" size="10"/> kWp</td>
                 <td class="translate description">Device_power</td>
+                <td class="inputvalue"><input type="text" id="power" class="value" size="10" style="text-align: right"/> kWp</td>
             </tr>
         </table>
     </div>
