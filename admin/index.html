@@ -1,32 +1,33 @@
 <html>
 
-<!-- these 4 files always have to be included -->
-<link rel="stylesheet" type="text/css" href="../../lib/css/themes/jquery-ui/redmond/jquery-ui.min.css"/>
-<link rel="stylesheet" type="text/css" href="../../lib/css/jquery.multiselect-1.13.css"/>
+    <!-- these 4 files always have to be included -->
+    <link rel="stylesheet" type="text/css" href="../../lib/css/themes/jquery-ui/redmond/jquery-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../lib/css/jquery.multiselect-1.13.css"/>
 
-<script type="text/javascript" src="../../lib/js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="../../socket.io/socket.io.js"></script>
-<script type="text/javascript" src="../../lib/js/jquery-ui-1.10.3.full.min.js"></script>
+    <script type="text/javascript" src="../../lib/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="../../lib/js/jquery-ui-1.10.3.full.min.js"></script>
 
-<!-- these two file always have to be included -->
-<link rel="stylesheet" type="text/css" href="../../css/adapter.css"/>
-<script type="text/javascript" src="../../js/translate.js"></script>
-<script type="text/javascript" src="../../js/adapter-settings.js"></script>
-<!-- List of Postcodes-->
-<script type="text/javascript" src="plz.js"></script>
+    <!-- these two file always have to be included -->
+    <link rel="stylesheet" type="text/css" href="../../css/adapter.css"/>
+    <script type="text/javascript" src="../../js/translate.js"></script>
+    <script type="text/javascript" src="../../js/adapter-settings.js"></script>
 
-<style>
-    #config {
-        font-size: smaller;	
-    }
-    .headline {
-    	padding-top: 20px;
-    	padding-left: 10px;
-    }
-</style>
+    <!-- List of Postcodes-->
+    <script type="text/javascript" src="plz.js"></script>
 
-<script type="text/javascript">
-	systemDictionary = {
+    <style>
+        #config {
+            font-size: smaller;	
+        }
+        .headline {
+        	padding-top: 20px;
+        	padding-left: 10px;
+        }
+    </style>
+
+    <script type="text/javascript">
+    	systemDictionary = {
             "solarwetter Adapter settings": {
                 "en": "solarwetter Adapter settings",
                 "de": "solarwetter Adapter Einstellungen",
@@ -47,54 +48,49 @@
                 "de": "Daten von solar-wetter.com",
                 "ru": "Translate to ru please: Data provided by solar-wetter.com"
             }
-    };
-
-    function load(settings, onChange) {
-        $('#location').val(settings.location).change(onChange).keyup(onChange);
-        //$('#location').val(settings.location).change(onChange);
-        onChange(false);
-    }
-      
-    function save(callback) {
-        callback(location: $('#location').val());
-    }
-    /*  
-    function save(callback) {
-        // example: select elements with class=value and build settings object
-        var settings = {};
-        $('.value').each(function () {
-            var $this = $(this);
-            var id = $this.attr('id');
-            if ($this.attr('type') == 'checkbox') {
-                settings[id] = $this.prop('checked');
-            } else {
-                settings[id] = $this.val();
-            }
-        });
-        callback(settings);
-    }
-    */
-</script>
-
-<div id="adapter-container">
-    <table style="width: 100%">
-    	<tr>
-            <td><img src="solarwetter.png"></td>
-            <td class="headline"><h3 class="translate">solarwetter Adapter settings</h3></td>
-        </tr>
-    </table>
-    <h4 class="translate" style="width: calc(100% - 10px)">Postcode</h4>
-    <table id="config" style="width: calc(100% - 5px)">
-        <tr>
-            <td class="translate">Description</td>
-        </tr>
-        <tr>
-            <td><input type="text" class="value" id="location" size = "3"/></td>
-        </tr>
-        <tr>    
-            <td class="translate" style="color: gray; font-style: italic; font-size: smaller">Copyright</td>
-        </tr>
+        };
+/*
+        function load(settings, onChange) {
+            $('#location').val(settings.location).change(onChange).keyup(onChange);
+            //$('#location').val(settings.location).change(onChange);
+            onChange(false);
+        }
+ */     
+        function save(callback) {
+            callback(location: $('#location').val());
+        }
+    
+        function load(settings, onChange) {
+        var select_size = plz.length + 1;
+        var text = '<select name="PLZ-Liste" size="' +  select_size + '">\n';
+        for (var p in plz) {
+            text += '<option>' + plz[p] + '</option>\n';
+        }
+        text += '</select>';
         
-    </table>
-</div>
+        $('#config').append(text);
+    
+    
+    </script>
+
+    <div id="adapter-container">
+        <table style="width: 100%">
+    	    <tr>
+                <td><img src="solarwetter.png"></td>
+                <td class="headline"><h3 class="translate">solarwetter Adapter settings</h3></td>
+            </tr>
+        </table>
+        <h4 class="translate" style="width: calc(100% - 10px)">Postcode</h4>
+        <table id="config" style="width: calc(100% - 5px)">
+            <tr>
+                <td class="translate">Description</td>
+            </tr>
+            <tr>
+                <td><select class="value" id="location" size = "3"/></td>
+            </tr>
+            <tr>    
+                <td class="translate" style="color: gray; font-style: italic; font-size: smaller">Copyright</td>
+            </tr>
+        </table>
+    </div>
 </html>
