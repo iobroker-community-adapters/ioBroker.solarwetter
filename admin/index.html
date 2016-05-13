@@ -61,14 +61,17 @@
         }
     
         function load(settings, onChange) {
-        var select_size = plz.length + 1;
-        var text = '<select name="PLZ-Liste" size="' +  select_size + '">\n';
-        for (var p in plz) {
-            text += '<option>' + plz[p] + '</option>\n';
-        }
-        text += '</select>';
+            var select_size = plz.length + 1;
+            var text = '<select name="PLZ-Liste" size="' +  select_size + '">\n';
+            for (var p in plz) {
+                text += '<option>' + plz[p] + '</option>\n';
+            }
+            text += '</select>';
         
-        $('#config').append(text);
+            $('#config').append(text);
+            
+            onChange(false);
+        }
     
     
     </script>
