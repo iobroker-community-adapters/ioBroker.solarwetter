@@ -46,6 +46,9 @@ tvspielfilm.0.forecast.__Datum__  (*Timestamp*)
 ### 0.0.1 (2016-05-12)
 * (pix) first release
 
+## ToDo
+* Post code in settings load correct value
+
 ## License
 
 The MIT License (MIT)
