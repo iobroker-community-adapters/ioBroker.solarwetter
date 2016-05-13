@@ -58,6 +58,9 @@ solarwetter.0.forecast.home.__Leistung__ (*value*)
 
 
 ## Changelog
+### 0.0.5 (2016-05-14)
+* (pix) Settings now show correct location if already defined
+
 ### 0.0.4 (2016-05-13)
 * (pix) Appearance of settings window
 

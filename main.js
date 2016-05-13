@@ -49,7 +49,7 @@ adapter.on('ready', function () {
 
 function readSettings() {
     plz = adapter.config.location;
-    if (plz === undefined || plz === 0) {
+    if (plz === undefined || plz === 0 || plz === "select") {
         adapter.log.info('Keine Region ausgewählt'); // Translate!
         
     } else {
@@ -62,7 +62,7 @@ function readSettings() {
         adapter.log.info('Keine Leistung für die eigene Anlage angegeben'); // Translate!
         power = 0;
     } else {
-        adapter.log.info('Leistung eigene Anlage: '+ power + 'kWp');
+        adapter.log.info('Leistung eigene Anlage: '+ power + ' kWp');
     }
     adapter.setState(idHomeAnlage, power, true);
 } 

@@ -78,19 +78,22 @@
         function load(settings, onChange) {
             $('#location').val(settings.location).change(onChange).keyup(onChange);
               
-            // ggf. attribut "selected" für option noch realisieren          
+            // Wertelist aus plz einbauen          
             var text = '';
             for (var p in plz) {
                 text += '<option value="' + plz[p] + '">' + plz[p] + '</option>\n';
             }
             $('#areacodelist').append(text);
-           
+            
+            // Show correct Area Code when already defined
+            $('#location').val(settings.location).change(onChange)
+            
             $('#power').val(settings.power).change(onChange).keyup(onChange);
             onChange(false);
         }
         
         function save(callback) {
-            callback({location: $('#location').val(), power: $('#power').val().replace(/,/, ".")});
+            callback({location: $('#location').val(), power: $('#power').val().replace(/,/, ".")}); // nicht nur . statt , später auch Plausibilität
         }
     </script>
 
