@@ -17,7 +17,7 @@
         "readme":                   "https://github.com/Pix---/ioBroker.solarwetter/blob/master/README.md",
         "icon":                     "solarwetter.png",
         "extIcon":                  "https://raw.githubusercontent.com/Pix---/ioBroker.solarwetter/master/admin/solarwetter.png",
-	"allowInit":                true,
+	    "allowInit":                true,
         "type":                     "weather",
         "config": {
             "width": 650,

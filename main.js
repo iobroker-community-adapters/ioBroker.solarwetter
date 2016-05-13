@@ -2,6 +2,7 @@
 /*jslint node: true */
 
 "use strict";
+var http        = require('http');
 var utils       = require(__dirname + '/lib/utils'); // Get common adapter utils
 var request     = require('request');
 var lang = 'de';
@@ -30,9 +31,25 @@ adapter.on('ready', function () {
     });
 });
 
+
 function readSettings() {
     if (adapter.config.location === undefined || adapter.config.location === 0) adapter.log.info('Keine Region ausgewählt'); // Translate!
     else adapter.log.info('Postcode: ' + adapter.config.location;
+    // Test
+    adapter.getObject('forecast', function (err, obj) {
+        if (!obj || !obj.common || obj.common.name !== 'forecast ' + adapter.config.location {
+            adapter.setObject('forecast', {
+                type: 'channel',
+                role: 'forecast',
+                common: {
+                    name: 'Solar-Wetter.com forecast ' + adapter.config.location
+                }
+            });
+        }
+    });
+    // Ende Test
+    
+    
 } 
 var logging = true;
 
