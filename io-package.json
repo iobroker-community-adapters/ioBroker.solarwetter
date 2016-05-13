@@ -28,7 +28,7 @@
     },
     "native": {
     	"location" : "995",
-    	"power": 1
+    	"power": 0
     },
     "objects": [],
     "instanceObjects": [
