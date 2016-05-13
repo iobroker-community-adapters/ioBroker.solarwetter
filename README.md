@@ -40,9 +40,11 @@ tvspielfilm.0.forecast.__Datum__  (*Timestamp*)
 
 ## Changelog
 
-### 0.0.1 (2016-05-12)
-* (pix) Adapter created
+### 0.0.2 (2016-05-13)
+* (pix) Post code area selectable
 
+### 0.0.1 (2016-05-12)
+* (pix) first release
 
 ## License
 

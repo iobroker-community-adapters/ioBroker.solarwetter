@@ -15,6 +15,14 @@ var adapter = utils.adapter({
 var plz;
 var link;
 
+var logging = true;
+
+var idClearSky =   'forecast.clearSky',
+    idRealSkyMin = 'forecast.realSky_min',
+    idRealSkyMax = 'forecast.realSky_max',
+    idDatum =      'forecast.Datum',
+    idPLZ =        'forecast.Region';
+    
 adapter.on('ready', function () {
     adapter.getForeignObject('system.config', function (err, data) {
         if (data && data.common) {
@@ -39,34 +47,11 @@ function readSettings() {
     if (plz === undefined || plz === 0) {
         adapter.log.info('Keine Region ausgewählt'); // Translate!
         
-    } else adapter.log.info('Postcode: '+ plz);
-    // Test
-    /*
-    adapter.getObject('forecast', function (err, obj) {
-        if (!obj || !obj.common || obj.common.name !== 'forecast ' + plz) {
-            adapter.setObject('forecast', {
-                type: 'channel',
-                role: 'forecast',
-                common: {
-                    name: 'Solar-Wetter.com forecast ' + plz
-                },
-                native: {
-                    plz: plz
-                }
-            });
-        }
-    });
-    */
-    // Ende Test
-    
-    
+    } else {
+        adapter.log.info('Postcode: '+ plz);
+        adapter.setState(idPLZ, plz, true);
+    }
 } 
-var logging = true;
-
-var idClearSky =   'forecast.clearSky',
-    idRealSkyMin = 'forecast.realSky_min',
-    idRealSkyMax = 'forecast.realSky_max',
-    idDatum =      'forecast.Datum';
 
 function erstes_erstesAuftauchen(body,text1,text2) {
     var start = body.indexOf(text1) + text1.length;
