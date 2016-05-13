@@ -63,7 +63,7 @@
             for /*(var p; p <= plz.length; p++)*/ (var p in plz) {
                 text += '<option value="' + plz[p] + '">' + plz[p] + '</option>\n';
             }
-            text += '</select>\n';
+            //text += '</select>\n';
             $('#areacodelist').append(text);
             
             onChange(false);
@@ -87,7 +87,7 @@
                 <td id="areacodelist">
                     <select class="value" id="location" name="PLZ-Liste">
                     <!-- hier wird Inhalt vom Skript eingefügt -->
-                    
+                    </select>
                 </td>
             </tr>
         </table>
