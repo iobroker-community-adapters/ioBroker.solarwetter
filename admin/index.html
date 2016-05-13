@@ -57,7 +57,7 @@
         }
  */     
         function save(callback) {
-            callback(location: $('#location').val());
+            callback({location: $('#location').val()});
         }
     
         function load(settings, onChange) {
@@ -67,7 +67,7 @@
             for (var p in plz) {
                 text += '<option value="' + plz[p] + '">' + plz[p] + '</option>\n';
             }
-            text += '</select>\n';
+            
             console.log(text);
             $('#config').append(text);
             
@@ -87,8 +87,10 @@
         <h4 class="translate" style="width: calc(100% - 10px)">Postcode</h4>
         <table style="width: calc(100% - 5px)">
             <tr>
-                <td id="config"><select class="value" id="location" name="PLZ-Liste">
-                <!-- hier wird Inhalt vom Skript eingefügt -->
+                <td id="config">
+                    <select class="value" id="location" name="PLZ-Liste">
+                    <!-- hier wird Inhalt vom Skript eingefügt -->
+                    </select>
                 </td>
             </tr>
         </table>
