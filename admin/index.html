@@ -64,7 +64,7 @@
             var select_size = plz.length + 1;
             console.log(select_size);
             var text = '<select class="value" id="location" name="PLZ-Liste" size="' +  select_size + '">\n';
-            for (var p; p <= select_size; p++) {
+            for (var p in plz) {
                 text += '<option value="' + plz[p] + '">' + plz[p] + '</option>\n';
             }
             text += '</select>\n';
