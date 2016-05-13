@@ -47,7 +47,8 @@ tvspielfilm.0.forecast.__Datum__  (*Timestamp*)
 * (pix) first release
 
 ## ToDo
-* Post code in settings load correct value
+* post code in settings load correct value
+* beautify icon
 
 ## License
 
