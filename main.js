@@ -13,15 +13,20 @@ var adapter = utils.adapter({
 });
 
 var plz;
+var power;
 var link;
 
 var logging = false;
 
-var idClearSky =   'forecast.clearSky',
-    idRealSkyMin = 'forecast.realSky_min',
-    idRealSkyMax = 'forecast.realSky_max',
-    idDatum =      'forecast.Datum',
-    idPLZ =        'forecast.Region';
+var idClearSky =       'forecast.clearSky',
+    idRealSkyMin =     'forecast.realSky_min',
+    idRealSkyMax =     'forecast.realSky_max',
+    idDatum =          'forecast.Datum',
+    idPLZ =            'forecast.Region',
+    idHomeAnlage =     'forecast.home.Leistung',
+    idHomeClearSky =   'forecast.home.clearSky',
+    idHomeRealSkyMin = 'forecast.home.realSky_min',
+    idHomeRealSkyMax = 'forecast.home.realSky_max';
     
 adapter.on('ready', function () {
     adapter.getForeignObject('system.config', function (err, data) {
@@ -51,6 +56,15 @@ function readSettings() {
         adapter.log.info('Postcode: '+ plz);
         adapter.setState(idPLZ, plz, true);
     }
+    
+    power = adapter.config.power;
+    if (power === undefined || power === 0) {
+        adapter.log.info('Keine Leistung für die eigene Anlage angegeben'); // Translate!
+        power = 0;
+    } else {
+        adapter.log.info('Leistung eigene Anlage: '+ power + 'kWp');
+    }
+    adapter.setState(idHomeAnlage, power, true);
 } 
 
 function erstes_erstesAuftauchen(body,text1,text2) {
@@ -131,6 +145,7 @@ function findeWertClearsky (body) {
     var clearsky = erstes_erstesAuftauchen(body,text1,text2);
     if (logging) adapter.log.debug('ClearSky: ' + clearsky);
     adapter.setState(idClearSky, {ack: true, val: clearsky});                         // Wert in Objekt schreiben
+    adapter.setState(idHomeClearSky, {ack: true, val: clearsky * power});             // Wert in Objekt schreiben
 }
 
 function findeWertRealskyMinimum (body) {   
@@ -139,6 +154,7 @@ function findeWertRealskyMinimum (body) {
     var realsky_min = erstes_erstesAuftauchen(body,text1,text2);
     if (logging) adapter.log.debug('RealSkyMinimum: ' + realsky_min);
     adapter.setState(idRealSkyMin, {ack: true, val: realsky_min});                    // Wert in Objekt schreiben
+    adapter.setState(idHomeRealSkyMin, {ack: true, val: realsky_min * power});        // Wert in Objekt schreiben
 }
  
 function findeWertRealskyMaximum (body) {   
@@ -147,6 +163,7 @@ function findeWertRealskyMaximum (body) {
     var realsky_max = erstes_letztesAuftauchen(body,text1,text2);
     if (logging) adapter.log.debug('RealSkyMaximum: ' + realsky_max);
     adapter.setState(idRealSkyMax, {ack: true, val: realsky_max});                    // Wert in Objekt schreiben
+    adapter.setState(idHomeRealSkyMax, {ack: true, val: realsky_max * power});        // Wert in Objekt schreiben
 }
 
 function findeDatum (body) {   

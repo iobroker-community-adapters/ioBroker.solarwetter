@@ -17,12 +17,20 @@
     <script type="text/javascript" src="plz.js"></script>
 
     <style>
-        #description {
+        .description {
             font-size: smaller;	
         }
         .headline {
         	padding-top: 20px;
         	padding-left: 10px;
+        }
+        .subline {
+        
+        }
+        .copyright {
+           color: gray;
+           font-style: italic;
+           font-size: smaller;
         }
     </style>
 
@@ -34,9 +42,9 @@
                 "ru": "Настройки solarwetter Adapter"
             },
             "Postcode": {
-                "en": "Post code area:",
-                "de": "Postleitzahlenbereich:",
-                "ru": "Translate please: Postleitzahlenbereich:"
+                "en": "Post code area",
+                "de": "Postleitzahlenbereich",
+                "ru": "Translate please: Postleitzahlenbereich"
             },
             "Description": {
                 "en": "Choose your area by selecting the post code",
@@ -47,6 +55,16 @@
                 "en": "Data provided by solar-wetter.com",
                 "de": "Daten von solar-wetter.com",
                 "ru": "Translate to ru please: Data provided by solar-wetter.com"
+            },
+            "Device": {
+                "en": "Solar plant",
+                "de": "Solaranlage",
+                "ru": "Translate to ru please: Solar plant"
+            },
+            "Device_power": {
+                "en": "Power of your device",
+                "de": "Geben Sie die Gesamtleistung Ihrer Anlage ein",
+                "ru": "Translate to ru please: Geben Sie die Gesamtleistung Ihrer Anlage ein"
             }
         };
    
@@ -59,12 +77,13 @@
                 text += '<option value="' + plz[p] + '">' + plz[p] + '</option>\n';
             }
             $('#areacodelist').append(text);
-            
+           
+            $('#power').val(settings.power).change(onChange).keyup(onChange);
             onChange(false);
         }
         
         function save(callback) {
-            callback({location: $('#location').val()});
+            callback({location: $('#location').val(), power: $('#power').val().replace(/,/, ".")});
         }
     </script>
 
@@ -75,7 +94,7 @@
                 <td class="headline"><h3 class="translate">solarwetter Adapter settings</h3></td>
             </tr>
         </table>
-        <h4 class="translate" style="width: calc(100% - 10px)">Postcode</h4>
+        <h4 class="translate subline" style="width: calc(100% - 10px)">Postcode</h4>
         <table style="width: calc(100% - 5px)">
             <tr>
                 <td>
@@ -84,15 +103,18 @@
                         <!-- areacodelist from plz.js will be pasted here by skript -->
                         </optgroup>
                     </select>
-                </td>
-            </tr>
-        </table>
-        <table id="description" style="width: calc(100% - 5px)">
-            <tr>
-                <td class="translate ">Description</td>
+                </td> 
+                <td class="translate description">Description</td>
             </tr>
             <tr>    
-                <td class="translate" style="color: gray; font-style: italic; font-size: smaller">Copyright</td>
+                <td class="translate copyright">Copyright</td>
+            </tr>
+        </table>
+        <h4 class="translate subline" style="width: calc(100% - 10px)">Device</h4>
+        <table id="owndevice" style="margin-top: 20px; width: calc(100% - 5px)">
+            <tr>
+                <td ><input type="text" id="power" class="value" size="10"/> kWp</td>
+                <td class="translate description">Device_power</td>
             </tr>
         </table>
     </div>

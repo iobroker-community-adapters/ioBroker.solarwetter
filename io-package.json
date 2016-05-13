@@ -5,7 +5,7 @@
         "desc": {                   "en": "prognostizierter Solarstrom Tagesertrag solar-wetter.com",
                                     "de": "Solar Power Forecast solar-wetter.com",
                                     "ru": "prognostizierter Solarstrom Tagesertrag solar-wetter.com - translate to russian, please"},
-        "version":                  "0.0.2",
+        "version":                  "0.0.3",
         "mode":                     "schedule",
         "schedule":                 "17 8 * * *",
         "platform":                 "javascript/Node.js",
@@ -27,7 +27,8 @@
         }
     },
     "native": {
-    	"location" : "995"
+    	"location" : "995",
+    	"power": 1
     },
     "objects": [],
     "instanceObjects": [
@@ -36,7 +37,7 @@
             "type": "channel",
             "common": {
                 "role": "",
-                "name": ""
+                "name": "Daten von solar-wetter.com"
             },
             "native": {}
         },
@@ -103,6 +104,71 @@
                 "desc":  "ausgewählter Postleitzahlenbereich",
                 "type":  "string",
                 "role" : "value",
+                "read":  true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id":  "forecast.home",
+            "type": "channel",
+            "common": {
+                "role": "",
+                "name": "Eigene Solaranlage"
+            },
+            "native": {}
+        },
+        {
+            "_id":  "forecast.home.Leistung",
+            "type": "state",
+            "common": {
+                "name":  "Leistung",
+                "desc":  "Gesamtleistung der eigenen Anlage",
+                "type":  "number",
+                "role" : "value",
+                "unit" : "kWp",
+                "read":  true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id":  "forecast.home.clearSky",
+            "type": "state",
+            "common": {
+                "name":  "Energie bei clearSky",
+                "desc":  "Energie der eigenen Anlage bei klarem Himmel",
+                "type":  "number",
+                "role" : "value",
+                "unit" : "kWh",
+                "read":  true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id":  "forecast.home.realSky_max",
+            "type": "state",
+            "common": {
+                "name":  "maximale Energie bei realSky_max",
+                "desc":  "maximale Energie der eigenen Anlage bei jetzigem Himmel",
+                "type":  "number",
+                "role" : "value",
+                "unit" : "kWh",
+                "read":  true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id":  "forecast.home.realSky_min",
+            "type": "state",
+            "common": {
+                "name":  "minimale Energie bei realSky_min",
+                "desc":  "minimale Energie der eigenen Anlage bei jetzigem Himmel",
+                "type":  "number",
+                "role" : "value",
+                "unit" : "kWh",
                 "read":  true,
                 "write": false
             },

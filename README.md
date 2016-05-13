@@ -9,15 +9,19 @@
 [![NPM](https://nodei.co/npm/iobroker.solarwetter.png?downloads=true)](https://nodei.co/npm/iobroker.solarwetter/)
 
 ## Beschreibung / Description
-:de: Dieser Adapter liefert den prognostizierten Solarstrom Tagesertrag für eine bestimmte Region. Die Daten kommen von [http://www.auswahl-plz-bereich.solar-wetter.com](http://solar-wetter.com). 
+:de: Dieser Adapter liefert den prognostizierten Solarstrom Tagesertrag für eine bestimmte Region. Die Daten kommen von [http://www.auswahl-plz-bereich.solar-wetter.com](http://solar-wetter.com).
+Bei Eingabe der Leistung der eigenen Solaranlage errechnet der Adapter auch die zu erwartende Energieabgabe der Anlage.
 
 :uk: This adapter delivers a forecast of the daily amount of solar power for a specific region from supplier [http://www.auswahl-plz-bereich.solar-wetter.com](http://solar-wetter.com). 
+Translate!!!!
 
 ## Einstellungen / Configuration
 ### Region
 Örtlichkeit durch Auswahl des Postleitzahlenbereichs bestimmen
+Gesamtleistung der eigenen Solaranlage zur Berechnung der Energieerzeugung
 
 Choose your region by selecting from the list of post codes.
+Type in power of your solar plant to calculate energy output.
 
 ![alt text](img/solarwetterSettingScreenshot.jpg "Screenshot Settings")
 
@@ -38,9 +42,19 @@ solarwetter.0.forecast.__Datum__  (*string, no timestamp*)
 
 solarwetter.0.forecast.__Region__ (*value*)
 
+solarwetter.0.forecast.home.__clearSky__ (*value*)
+
+solarwetter.0.forecast.home.__realSky_min__(*value*)
+
+solarwetter.0.forecast.home.__realSky_max__ (*value*)
+
+solarwetter.0.forecast.home.__Leistung__ (*value*)
+
 
 
 ## Changelog
+### 0.0.3 (2016-05-13)
+* (pix) Calculates power of own solar plant
 
 ### 0.0.2 (2016-05-13)
 * (pix) Post code area selectable
