@@ -30,11 +30,11 @@ The adapter starts once a day.
 
 solarwetter.0.forecast.__clearSky__
 
-tvspielfilm.0.json.__realSky_min__
+tvspielfilm.0.forecast.__realSky_min__
 
-tvspielfilm.0.json.__realSky_max__
+tvspielfilm.0.forecast.__realSky_max__
 
-tvspielfilm.0.json.__Datum__  (*Timestamp*)
+tvspielfilm.0.forecast.__Datum__  (*Timestamp*)
 
 
 
