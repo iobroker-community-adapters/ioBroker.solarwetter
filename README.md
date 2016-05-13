@@ -34,7 +34,7 @@ solarwetter.0.forecast.__realSky_min__(*value*)
 
 solarwetter.0.forecast.__realSky_max__ (*value*)
 
-solarwetter.0.forecast.__Datum__  (*String, kein Timestamp*)
+solarwetter.0.forecast.__Datum__  (*string, no timestamp*)
 
 solarwetter.0.forecast.__Region__ (*value*)
 
