@@ -57,8 +57,10 @@
         }
  */     
         function load(settings, onChange) {
+            $('#location').val(settings.location).change(onChange).keyup(onChange);
+                        
             var text = '';
-            for (var p; p <= plz.length; p++) {
+            for /*(var p; p <= plz.length; p++)*/ (var p in plz) {
                 text += '<option value="' + plz[p] + '">' + plz[p] + '</option>\n';
             }
             text += '</select>\n';
