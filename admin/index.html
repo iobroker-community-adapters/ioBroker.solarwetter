@@ -17,7 +17,7 @@
     <script type="text/javascript" src="plz.js"></script>
 
     <style>
-        #config {
+        #description {
             font-size: smaller;	
         }
         .headline {
@@ -63,7 +63,7 @@
         function load(settings, onChange) {
             var select_size = plz.length + 1;
             adapter.log.info(select_size);
-            var text = '<tr>\n<select name="PLZ-Liste" size="' +  select_size + '">\n';
+            var text = '<tr>\n<select class="value" id="location" name="PLZ-Liste" size="' +  select_size + '">\n';
             for (var p; p <= select_size; p++) {
                 text += '<option value="' + plz[p] + '">' + plz[p] + '</option>\n';
             }
@@ -86,11 +86,11 @@
         </table>
         <h4 class="translate" style="width: calc(100% - 10px)">Postcode</h4>
         <table id="config" style="width: calc(100% - 5px)">
+            <!-- hier wird Inhalt vom Skript eingefügt -->
+        </table>
+        <table id="description" style="width: calc(100% - 5px)">
             <tr>
-                <td class="translate">Description</td>
-            </tr>
-            <tr>
-                <td><select class="value" id="location" size = "3"/></td>
+                <td class="translate ">Description</td>
             </tr>
             <tr>    
                 <td class="translate" style="color: gray; font-style: italic; font-size: smaller">Copyright</td>
