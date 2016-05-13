@@ -41,6 +41,7 @@ function readSettings() {
         
     } else adapter.log.info('Postcode: '+ plz);
     // Test
+    /*
     adapter.getObject('forecast', function (err, obj) {
         if (!obj || !obj.common || obj.common.name !== 'forecast ' + plz) {
             adapter.setObject('forecast', {
@@ -48,10 +49,14 @@ function readSettings() {
                 role: 'forecast',
                 common: {
                     name: 'Solar-Wetter.com forecast ' + plz
+                },
+                native: {
+                    plz: plz
                 }
             });
         }
     });
+    */
     // Ende Test
     
     
