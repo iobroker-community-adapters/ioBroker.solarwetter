@@ -62,7 +62,7 @@
                 text += '<option value="' + plz[p] + '">' + plz[p] + '</option>\n';
             }
             text += '</select>\n';
-            $('#config').append(text);
+            $('#areacodelist').append(text);
             
             onChange(false);
         }
@@ -82,7 +82,7 @@
         <h4 class="translate" style="width: calc(100% - 10px)">Postcode</h4>
         <table style="width: calc(100% - 5px)">
             <tr>
-                <td id="config">
+                <td id="areacodelist">
                     <select class="value" id="location" name="PLZ-Liste">
                     <!-- hier wird Inhalt vom Skript eingefügt -->
                     
