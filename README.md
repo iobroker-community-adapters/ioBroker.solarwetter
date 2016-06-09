@@ -58,6 +58,9 @@ solarwetter.0.forecast.home.__Leistung__ (*value*)
 
 
 ## Changelog
+### 0.0.6 (2016-06-09)
+* (pix) Adapter.stop() fixed
+
 ### 0.0.5 (2016-05-14)
 * (pix) Settings now show correct location if already defined
 
