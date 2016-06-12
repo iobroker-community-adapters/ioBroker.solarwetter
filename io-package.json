@@ -1,24 +1,35 @@
 {
     "common": {
-        "name":                     "solarwetter",
-        "title":                    "Solarwetter",
-        "desc": {                   "en": "prognostizierter Solarstrom Tagesertrag solar-wetter.com",
-                                    "de": "Solar Power Forecast solar-wetter.com",
-                                    "ru": "prognostizierter Solarstrom Tagesertrag solar-wetter.com - translate to russian, please"},
-        "version":                  "0.0.6",
-        "mode":                     "schedule",
-        "schedule":                 "17 8 * * *",
-        "platform":                 "javascript/Node.js",
-        "loglevel":                 "info",
-        "keywords":                 ["solar", "solar-wetter", "energy", "parse", "pix", "weather"],
-        "main":                     "main.js",
-        "authors":                  ["Pix"],
-        "license":                  "MIT",
-        "readme":                   "https://github.com/Pix---/ioBroker.solarwetter/blob/master/README.md",
-        "icon":                     "solarwetter.png",
-        "extIcon":                  "https://raw.githubusercontent.com/Pix---/ioBroker.solarwetter/master/admin/solarwetter.png",
-	    "allowInit":                true,
-        "type":                     "weather",
+        "name": "solarwetter",
+        "title": "Solarwetter",
+        "desc": {
+            "en": "prognostizierter Solarstrom Tagesertrag solar-wetter.com",
+            "de": "Solar Power Forecast solar-wetter.com",
+            "ru": "prognostizierter Solarstrom Tagesertrag solar-wetter.com - translate to russian, please"
+        },
+        "version": "0.1.0",
+        "mode": "schedule",
+        "schedule": "17 8 * * *",
+        "platform": "javascript/Node.js",
+        "loglevel": "info",
+        "keywords": [
+            "solar",
+            "solar-wetter",
+            "energy",
+            "parse",
+            "pix",
+            "weather"
+        ],
+        "main": "main.js",
+        "authors": [
+            "Pix"
+        ],
+        "license": "MIT",
+        "readme": "https://github.com/Pix---/ioBroker.solarwetter/blob/master/README.md",
+        "icon": "solarwetter.png",
+        "extIcon": "https://raw.githubusercontent.com/Pix---/ioBroker.solarwetter/master/admin/solarwetter.png",
+        "allowInit": true,
+        "type": "weather",
         "config": {
             "width": 650,
             "height": 450,
@@ -27,13 +38,13 @@
         }
     },
     "native": {
-    	"location" : "select",
-    	"power": 0
+        "location": "select",
+        "power": 0
     },
     "objects": [],
     "instanceObjects": [
         {
-            "_id":  "forecast",
+            "_id": "forecast",
             "type": "channel",
             "common": {
                 "role": "",
@@ -42,75 +53,75 @@
             "native": {}
         },
         {
-            "_id":  "forecast.clearSky",
+            "_id": "forecast.clearSky",
             "type": "state",
             "common": {
-                "name":  "Solar-Wetter.com clear Sky",
-                "desc":  "Solarleistung bei klarem Himmel",
-                "type":  "number",
-                "unit":  "kWh/kWp",
-                "role" : "value",
-                "read":  true,
+                "name": "Solar-Wetter.com clear Sky",
+                "desc": "Solarleistung bei klarem Himmel",
+                "type": "number",
+                "unit": "kWh/kWp",
+                "role": "value",
+                "read": true,
                 "write": false
             },
             "native": {}
         },
         {
-            "_id":  "forecast.realSky_min",
+            "_id": "forecast.realSky_min",
             "type": "state",
             "common": {
-                "name":  "Solar-Wetter.com real Sky Minimum",
-                "desc":  "minimale Solarleistung bei jetzigem Himmel",
-                "type":  "number",
-                "unit":  "kWh/kWp",
-                "role" : "value",
-                "read":  true,
+                "name": "Solar-Wetter.com real Sky Minimum",
+                "desc": "minimale Solarleistung bei jetzigem Himmel",
+                "type": "number",
+                "unit": "kWh/kWp",
+                "role": "value",
+                "read": true,
                 "write": false
             },
             "native": {}
         },
         {
-            "_id":  "forecast.realSky_max",
+            "_id": "forecast.realSky_max",
             "type": "state",
             "common": {
-                "name":  "Solar-Wetter.com real Sky Maximum",
-                "desc":  "maximale Solarleistung bei jetzigem Himmel",
-                "type":  "number",
-                "unit":  "kWh/kWp",
-                "role" : "value",
-                "read":  true,
+                "name": "Solar-Wetter.com real Sky Maximum",
+                "desc": "maximale Solarleistung bei jetzigem Himmel",
+                "type": "number",
+                "unit": "kWh/kWp",
+                "role": "value",
+                "read": true,
                 "write": false
             },
             "native": {}
         },
         {
-            "_id":  "forecast.Datum",
+            "_id": "forecast.Datum",
             "type": "state",
             "common": {
-                "name":  "Solar-Wetter.com Datum der letzten Aktualisierung",
-                "desc":  "letzte Aktualisierung der Webseite",
-                "type":  "string",
-                "role" : "date",
-                "read":  true,
+                "name": "Solar-Wetter.com Datum der letzten Aktualisierung",
+                "desc": "letzte Aktualisierung der Webseite",
+                "type": "string",
+                "role": "date",
+                "read": true,
                 "write": false
             },
             "native": {}
         },
         {
-            "_id":  "forecast.Region",
+            "_id": "forecast.Region",
             "type": "state",
             "common": {
-                "name":  "Solar-Wetter.com PLZ",
-                "desc":  "ausgewählter Postleitzahlenbereich",
-                "type":  "string",
-                "role" : "value",
-                "read":  true,
+                "name": "Solar-Wetter.com PLZ",
+                "desc": "ausgewählter Postleitzahlenbereich",
+                "type": "string",
+                "role": "value",
+                "read": true,
                 "write": false
             },
             "native": {}
         },
         {
-            "_id":  "forecast.home",
+            "_id": "forecast.home",
             "type": "channel",
             "common": {
                 "role": "",
@@ -119,57 +130,57 @@
             "native": {}
         },
         {
-            "_id":  "forecast.home.Leistung",
+            "_id": "forecast.home.Leistung",
             "type": "state",
             "common": {
-                "name":  "Leistung",
-                "desc":  "Gesamtleistung der eigenen Anlage",
-                "type":  "number",
-                "role" : "value",
-                "unit" : "kWp",
-                "read":  true,
+                "name": "Leistung",
+                "desc": "Gesamtleistung der eigenen Anlage",
+                "type": "number",
+                "role": "value",
+                "unit": "kWp",
+                "read": true,
                 "write": false
             },
             "native": {}
         },
         {
-            "_id":  "forecast.home.clearSky",
+            "_id": "forecast.home.clearSky",
             "type": "state",
             "common": {
-                "name":  "Energie bei clearSky",
-                "desc":  "Energie der eigenen Anlage bei klarem Himmel",
-                "type":  "number",
-                "role" : "value",
-                "unit" : "kWh",
-                "read":  true,
+                "name": "Energie bei clearSky",
+                "desc": "Energie der eigenen Anlage bei klarem Himmel",
+                "type": "number",
+                "role": "value",
+                "unit": "kWh",
+                "read": true,
                 "write": false
             },
             "native": {}
         },
         {
-            "_id":  "forecast.home.realSky_max",
+            "_id": "forecast.home.realSky_max",
             "type": "state",
             "common": {
-                "name":  "maximale Energie bei realSky_max",
-                "desc":  "maximale Energie der eigenen Anlage bei jetzigem Himmel",
-                "type":  "number",
-                "role" : "value",
-                "unit" : "kWh",
-                "read":  true,
+                "name": "maximale Energie bei realSky_max",
+                "desc": "maximale Energie der eigenen Anlage bei jetzigem Himmel",
+                "type": "number",
+                "role": "value",
+                "unit": "kWh",
+                "read": true,
                 "write": false
             },
             "native": {}
         },
         {
-            "_id":  "forecast.home.realSky_min",
+            "_id": "forecast.home.realSky_min",
             "type": "state",
             "common": {
-                "name":  "minimale Energie bei realSky_min",
-                "desc":  "minimale Energie der eigenen Anlage bei jetzigem Himmel",
-                "type":  "number",
-                "role" : "value",
-                "unit" : "kWh",
-                "read":  true,
+                "name": "minimale Energie bei realSky_min",
+                "desc": "minimale Energie der eigenen Anlage bei jetzigem Himmel",
+                "type": "number",
+                "role": "value",
+                "unit": "kWh",
+                "read": true,
                 "write": false
             },
             "native": {}

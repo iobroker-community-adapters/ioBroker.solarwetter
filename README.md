@@ -58,6 +58,9 @@ solarwetter.0.forecast.home.__Leistung__ (*value*)
 
 
 ## Changelog
+### 0.1.0 (2016-06-12)
+* (pix) publish on npm
+
 ### 0.0.6 (2016-06-09)
 * (pix) Adapter.stop() fixed
 
@@ -77,7 +80,6 @@ solarwetter.0.forecast.home.__Leistung__ (*value*)
 * (pix) first release
 
 ## ToDo
-* beautify icon
 * Translation of Datapoints
 * Russian translation of settings window
 
