@@ -58,6 +58,9 @@ solarwetter.0.forecast.home.__Leistung__ (*value*)
 
 
 ## Changelog
+### 0.1.1 (2016-06-20)
+* (pix) 4-Day-Forecast Chart
+
 ### 0.1.0 (2016-06-12)
 * (pix) publish on npm
 
