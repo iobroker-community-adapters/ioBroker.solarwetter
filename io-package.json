@@ -7,7 +7,7 @@
             "de": "Solar Power Forecast solar-wetter.com",
             "ru": "prognostizierter Solarstrom Tagesertrag solar-wetter.com - translate to russian, please"
         },
-        "version": "0.1.0",
+        "version": "0.1.1",
         "mode": "schedule",
         "schedule": "17 8 * * *",
         "platform": "javascript/Node.js",
@@ -32,13 +32,14 @@
         "type": "weather",
         "config": {
             "width": 650,
-            "height": 450,
+            "height": 500,
             "minWidth": 650,
-            "minHeight": 300
+            "minHeight": 450
         }
     },
     "native": {
         "location": "select",
+        "prognoseort": "select",
         "power": 0
     },
     "objects": [],
@@ -180,6 +181,39 @@
                 "type": "number",
                 "role": "value",
                 "unit": "kWh",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "forecast.chart",
+            "type": "channel",
+            "common": {
+                "role": "",
+                "name": "Eigene Solaranlage"
+            },
+            "native": {}
+        },
+        {
+            "_id": "forecast.chart.city",
+            "type": "state",
+            "common": {
+                "name": "4-Tage-Vorhersage Stadt",
+                "desc": "vom User gewählte Stadt für 4-Tage-Vorhersage",
+                "type": "string",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "forecast.chart.url",
+            "type": "state",
+            "common": {
+                "name": "4-Tage-Vorhersage URL",
+                "desc": "URL zum Chart für 4-Tage-Vorhersage",
+                "type": "string",
                 "read": true,
                 "write": false
             },

@@ -13,6 +13,7 @@ var adapter = utils.adapter({
 });
 
 var plz;
+var city;
 var power;
 var link;
 
@@ -23,6 +24,8 @@ var idClearSky =       'forecast.clearSky',
     idRealSkyMax =     'forecast.realSky_max',
     idDatum =          'forecast.Datum',
     idPLZ =            'forecast.Region',
+    idPrognose =       'forecast.chart.city',
+    idPrognoseURL =    'forecast.chart.url',
     idHomeAnlage =     'forecast.home.Leistung',
     idHomeClearSky =   'forecast.home.clearSky',
     idHomeRealSkyMin = 'forecast.home.realSky_min',
@@ -54,6 +57,16 @@ function readSettings() {
     } else {
         adapter.log.info('Postcode: '+ plz);
         adapter.setState(idPLZ, plz, true);
+    }
+    city = adapter.config.prognoseort;
+    if (!city || city === undefined || city.search(/(- )\b\b/gmi) != -1) {
+        adapter.log.info('Keine Stadt für eine 4-Tage-Prognose ausgewählt'); // Translate!
+        
+    } else {
+        adapter.log.info('4-Tage-Prognose für: '+ city);
+        adapter.setState(idPrognose, city, true);
+        adapter.setState(idPrognoseURL, 'http://www.solar-wetter.com/assets/' + city + '%20Vorhersage-Diagramm.GIF', true);
+        adapter.log.debug('URL für Bild: http://www.solar-wetter.com/assets/' + city + '%20Vorhersage-Diagramm.GIF');
     }
     
     power = adapter.config.power;
