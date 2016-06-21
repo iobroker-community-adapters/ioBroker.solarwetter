@@ -28,6 +28,11 @@ Hier kann die Gesamtleistung der eigenen Solaranlage zur Bechnung der vorraussic
 
 Put in the total power of your solar plant to calculate the daily forecast for energy production (decimal separators possible)
 
+### 4-Tage-Prognose / 4-day-forecast
+Wählen Sie hier eine Stadt. Der Adapter erzeugt einen Link zu einem Chart mit der 4-Tage-Prognose (Datenpunkt solarwetter.0.forecast.chart.__url__ ).
+
+Choose a city to have the adapter build a link to a 4-day-forecast chart (datapoint solarwetter.0.forecast.chart.__url__ ).
+
 ![alt text](img/solarwetterSettingScreenshot.jpg "Screenshot Settings")
 
 ## Aktivierung / Schedule
@@ -55,9 +60,16 @@ solarwetter.0.forecast.home.__realSky_max__ (*value*)
 
 solarwetter.0.forecast.home.__Leistung__ (*value*)
 
+solarwetter.0.forecast.chart.__city__ (*value*)
+
+solarwetter.0.forecast.chart.__url__ (*value*)
+
 
 
 ## Changelog
+### 0.1.2 (2016-06-21)
+* (pix) city selection fixed
+
 ### 0.1.1 (2016-06-20)
 * (pix) 4-Day-Forecast Chart
 

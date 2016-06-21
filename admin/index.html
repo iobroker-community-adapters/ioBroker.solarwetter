@@ -15,7 +15,7 @@
 
     <!-- Lists of Postcodes and Cities-->
     <script type="text/javascript" src="plz.js"></script>
-    <script type="text/javascript" src="city.js"></script>
+    <script type="text/javascript" src="cities.js"></script>
 
     <style>
         .description {
@@ -99,22 +99,8 @@
             
             // 4-tages-prognose
             $('#city').val(settings.prognoseort).change(onChange).keyup(onChange);
-              
-            // Werteliste aus city einbauen          
-            var text2 = '';
-            for (var c = 0; c < city.length; c++) {
-                //text2 += '<option value="' + city[c] + '">' + city[c] + '</option>\n';
-                //if (city[c].search(/(- )\b\b/gmi) != -1) { 
-                //    text2 += '<option value="' + city[c] + '">' + city[c]+ '</option>\n';
-                //} else { // Bundesländer als Gruppen-Überschrift
-                /*    text2 += '</optgroup>'; // nicht erstes Bundesland (0 = select, 1 = Bundesland1)
-                    text2 += '<optgroup label="' + city[c] + '">\n';
-                }*/
-                text2 += city[c];
-            }
-            //text2 += '</optgroup>'; // Bundesland Überschriften schließen
-            
-            $('#citylist').append(text2);
+            // Insert to HTML Code from cities.js
+            $('#city').append(city);
             
             // Show correct Area Code when already defined
             $('#city').val(settings.prognoseort).change(onChange)
@@ -176,9 +162,7 @@
                 <td class="translate description">Choose a city</td>
                 <td class="translate inputvalue">
                     <select class="value" id="city">
-                        <optgroup label="Stadt" id="citylist">
-                        <!-- citylist from city.js will be pasted here by skript -->
-                        </optgroup>
+                        <!-- citylist from cities.js will be pasted here by skript -->
                     </select>
                 </td>
             </tr>
