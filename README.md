@@ -4,7 +4,7 @@
 
 [![NPM version](http://img.shields.io/npm/v/iobroker.solarwetter.svg)](https://www.npmjs.com/package/iobroker.solarwetter)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.solarwetter.svg)](https://www.npmjs.com/package/iobroker.solarwetter)
-[![Tests](https://travis-ci.org/ioBroker/ioBroker.solarwetter.svg?branch=master)](https://travis-ci.org/ioBroker/ioBroker.solarwetter)
+[![Build Status](https://travis-ci.org/Pix---/ioBroker.solarwetter.svg?branch=master)](https://travis-ci.org/Pix---/ioBroker.solarwetter)
 
 [![NPM](https://nodei.co/npm/iobroker.solarwetter.png?downloads=true)](https://nodei.co/npm/iobroker.solarwetter/)
 
