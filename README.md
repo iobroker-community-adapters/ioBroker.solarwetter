@@ -67,6 +67,9 @@ solarwetter.0.forecast.chart.__url__ (*value*)
 
 
 ## Changelog
+### 0.2.0 (2017-01-05)
+* (pix) Travis CI testing added
+
 ### 0.1.2 (2016-06-21)
 * (pix) city selection fixed
 
