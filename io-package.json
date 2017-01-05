@@ -7,7 +7,7 @@
             "de": "Solar Power Forecast solar-wetter.com",
             "ru": "prognostizierter Solarstrom Tagesertrag solar-wetter.com - translate to russian, please"
         },
-        "version": "0.1.2",
+        "version": "0.2.0",
         "mode": "schedule",
         "schedule": "17 8 * * *",
         "platform": "javascript/Node.js",
