@@ -53,7 +53,7 @@ function readSettings() {
     plz = adapter.config.location;
     if (plz === undefined || plz === 0 || plz === "select") {
         adapter.log.info('Keine Region ausgewählt'); // Translate!
-        
+        adapter.stop();
     } else {
         adapter.log.info('Postcode: '+ plz);
         adapter.setState(idPLZ, plz, true);
@@ -61,7 +61,7 @@ function readSettings() {
     city = adapter.config.prognoseort;
     if (!city || city === undefined || city.search(/(- )\b\b/gmi) != -1) {
         adapter.log.info('Keine Stadt für eine 4-Tage-Prognose ausgewählt'); // Translate!
-        
+        adapter.stop();
     } else {
         adapter.log.info('4-Tage-Prognose für: '+ city);
         adapter.setState(idPrognose, city, true);
@@ -97,6 +97,7 @@ function erstes_erstesAuftauchen(body,text1,text2) {
     } else {
         zwischenspeicher = 'Fehler beim Ausschneiden';
         adapter.log.error(zwischenspeicher);
+        adapter.stop();
         return(0);
     }
 }
@@ -119,6 +120,7 @@ function erstes_letztesAuftauchen(body,text1,text2) {
     } else {
         zwischenspeicher = 'Fehler beim Ausschneiden';
         adapter.log.error(zwischenspeicher);
+        adapter.stop();
         return(0);
     }
 }
@@ -147,6 +149,7 @@ function loeseDatum (body,text1) {
     } else {
         zwischenspeicher = 'Fehler beim Ausschneiden';
         adapter.log.error(zwischenspeicher);
+        adapter.stop();
         return(null);
     }
 }
