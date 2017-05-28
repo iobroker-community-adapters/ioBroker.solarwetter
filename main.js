@@ -16,6 +16,8 @@ var plz;
 var city;
 var power;
 var link;
+var username;
+var password;
 
 var logging = false;
 
@@ -50,9 +52,19 @@ adapter.on('ready', function () {
 
 
 function readSettings() {
+    username = adapter.config.solarusername;
+    if (username === undefined || username === "") {
+        adapter.log.error('Enter username!'); // Translate!
+        adapter.stop();
+    }
+    password = adapter.config.solarpassword;
+    if (password === undefined || password === "") {
+        adapter.log.error('Enter password!'); // Translate!
+        adapter.stop();
+    }
     plz = adapter.config.location;
     if (plz === undefined || plz === 0 || plz === "select") {
-        adapter.log.info('Keine Region ausgewählt'); // Translate!
+        adapter.log.warn('Keine Region ausgewählt'); // Translate!
         adapter.stop();
     } else {
         adapter.log.info('Postcode: '+ plz);
@@ -60,7 +72,7 @@ function readSettings() {
     }
     city = adapter.config.prognoseort;
     if (!city || city === undefined || city.search(/(- )\b\b/gmi) != -1) {
-        adapter.log.info('Keine Stadt für eine 4-Tage-Prognose ausgewählt'); // Translate!
+        adapter.log.warn('Keine Stadt für eine 4-Tage-Prognose ausgewählt'); // Translate!
         adapter.stop();
     } else {
         adapter.log.info('4-Tage-Prognose für: '+ city);
@@ -71,12 +83,15 @@ function readSettings() {
     
     power = adapter.config.power;
     if (power === undefined || power === 0) {
-        adapter.log.info('Keine Leistung für die eigene Anlage angegeben'); // Translate!
+        adapter.log.warn('Keine Leistung für die eigene Anlage angegeben'); // Translate!
         power = 0;
     } else {
         adapter.log.info('Leistung eigene Anlage: '+ power + ' kWp');
     }
     adapter.setState(idHomeAnlage, power, true);
+    
+    
+    leseWebseite();
 } 
 
 function erstes_erstesAuftauchen(body,text1,text2) {
@@ -191,7 +206,7 @@ function findeDatum (body) {
 }
 
 function leseWebseite () {
-    var link = 'http://www.vorhersage-plz-bereich.solar-wetter.com/html/' + plz + '.html';
+    var link = 'http://' + username + ':' + password + '@www.vorhersage-plz-bereich.solar-wetter.com/html/' + plz + '.html';
     if (!plz || plz.length < 3) {
         adapter.log.warn('Kein PLZ-Bereich festgelegt. Adapter wird angehalten');
         adapter.stop;
@@ -212,7 +227,6 @@ function leseWebseite () {
 
 function main() {
     readSettings();
-    leseWebseite();
     adapter.log.info('objects written');
     //adapter.stop();
 }
