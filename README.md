@@ -4,6 +4,7 @@
 
 [![NPM version](http://img.shields.io/npm/v/iobroker.solarwetter.svg)](https://www.npmjs.com/package/iobroker.solarwetter)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.solarwetter.svg)](https://www.npmjs.com/package/iobroker.solarwetter)
+[![Open Issues](http://githubbadges.herokuapp.com/Pix---/ioBroker.solarwetter/issues.svg)](http://github.com/Pix---/ioBroker.solarwetter/issues)
 
 [![NPM](https://nodei.co/npm/iobroker.solarwetter.png?downloads=true)](https://nodei.co/npm/iobroker.solarwetter/)
 
