@@ -8,13 +8,18 @@
             "ru": "prognostizierter Solarstrom Tagesertrag solar-wetter.com - translate to russian, please"
         },
         "news": {
-	                            "0.3.0": {
-                                        "en": "Username & password Login provided",
-                                        "de": "Login mit Benutzer & Passwort",
-                                        "ru": "Username & password Login provided"
-				    }
+	    "1.0.0": {
+                "en": "End of beta. Nodejs version 4 or higher required",
+                "de": "Ende der Betaphase. Nodejs Version 4 oder höher nötig",
+                "ru": "End of beta. Nodejs version 4 or higher required"
 	    },
-        "version": "0.3.0",
+	    "0.3.0": {
+                "en": "Username & password Login provided",
+                "de": "Login mit Benutzer & Passwort",
+                "ru": "Username & password Login provided"
+	    }
+	},
+        "version": "1.0.0",
         "mode": "schedule",
         "schedule": "17 8 * * *",
         "platform": "javascript/Node.js",
