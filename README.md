@@ -1,6 +1,5 @@
 ![Logo](admin/solarwetter.png)
 # ioBroker.solarwetter
-=================
 
 [![NPM version](http://img.shields.io/npm/v/iobroker.solarwetter.svg)](https://www.npmjs.com/package/iobroker.solarwetter)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.solarwetter.svg)](https://www.npmjs.com/package/iobroker.solarwetter)
