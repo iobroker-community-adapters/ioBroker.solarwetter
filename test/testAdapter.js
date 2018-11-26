@@ -128,32 +128,6 @@ describe('Test ' + adapterShortName + ' adapter', function() {
 
     You can also use "sendTo" method to send messages to the started adapter
 */
-    
-    it('solarwetter: feeds to be parsed', function (done) {
-        this.timeout(20000);
-        states.getState('solarwetter.0.forecast.clearSky', function (err, fileName) {
-            expect(err).to.be.not.ok;
-            expect(fileName).to.be.ok;
-            expect(fileName.ack).to.be.true;
-            states.getState('solarwetter.0.forecast.realSky_min', function (err, fileName) {
-                expect(err).to.be.not.ok;
-                expect(fileName).to.be.ok;
-                expect(fileName.ack).to.be.true;
-                states.getState('solarwetter.0.forecast.realSky_max', function (err, fileName) {
-                    expect(err).to.be.not.ok;
-                    expect(fileName).to.be.ok;
-                    expect(fileName.ack).to.be.true;
-                    states.getState('solarwetter.0.forecast.Datum', function (err, fileName) {
-                        expect(err).to.be.not.ok;
-                        expect(fileName).to.be.ok;
-                        expect(fileName.ack).to.be.true;
-                        done();
-                    });
-                });
-            });
-        });
-    });
-
 
     after('Test ' + adapterShortName + ' adapter: Stop js-controller', function (done) {
         this.timeout(10000);
