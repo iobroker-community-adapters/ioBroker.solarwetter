@@ -196,6 +196,7 @@ function findeDatum (body) {
 
 function leseWebseite () {
     var link = 'http://www.vorhersage-plz-bereich.solar-wetter.com/html/' + plz + '.htm';
+    if (logging) adapter.log.debug('link to be retrieved: ' + link);
     if (!plz || plz.length < 3) {
         adapter.log.warn('Kein PLZ-Bereich festgelegt. Adapter wird angehalten');
         adapter.stop;
