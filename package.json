@@ -1,8 +1,8 @@
 {
   "name": "iobroker.solarwetter",
   "description": "Prognostizier Solarstrom Tagesertrag (von solar-wetter.com)",
-  "version": "1.0.0",
-  "author": "pix",
+  "version": "1.0.1",
+  "author": "motuditli",
   "contributors": [
     "pix"
   ],
