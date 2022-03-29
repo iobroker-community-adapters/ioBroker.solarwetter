@@ -16,8 +16,7 @@ var plz;
 var city;
 var power;
 var link;
-var username;
-var password;
+/* removed username & password 2022/03 */
 
 var logging = false;
 
@@ -52,16 +51,6 @@ adapter.on('ready', function () {
 
 
 function readSettings() {
-    username = adapter.config.solarusername;
-    if (username === undefined || username === "") {
-        adapter.log.error('Enter username!'); // Translate!
-        adapter.stop();
-    }
-    password = adapter.config.solarpassword;
-    if (password === undefined || password === "") {
-        adapter.log.error('Enter password!'); // Translate!
-        adapter.stop();
-    }
     plz = adapter.config.location;
     if (plz === undefined || plz === 0 || plz === "select") {
         adapter.log.warn('Keine Region ausgewählt'); // Translate!
@@ -171,7 +160,7 @@ function loeseDatum (body,text1) {
 
 function findeWertClearsky (body) {   
     var text1 = "<td height=17 class=xl1525883 style='height:12.75pt'>clear sky:</td>", // erstes Auftauchen
-        text2 = "<td class=xl2425883>kWh/kWp</td>";                 // erstes Auftauchen
+        text2 = "<td class=xl6525883>kWh/kWp</td>";                 // erstes Auftauchen
     var clearsky = erstes_erstesAuftauchen(body,text1,text2);
     if (logging) adapter.log.debug('ClearSky: ' + clearsky);
     adapter.setState(idClearSky, {ack: true, val: clearsky});                         // Wert in Objekt schreiben
@@ -180,7 +169,7 @@ function findeWertClearsky (body) {
 
 function findeWertRealskyMinimum (body) {   
     var text1 = "real sky:</td>",                                   // erstes Auftauchen
-        text2 = "<td class=xl2725883>-</td>";                       // erstes Auftauchen
+        text2 = "<td class=xl6825883>-</td>";                       // erstes Auftauchen
     var realsky_min = erstes_erstesAuftauchen(body,text1,text2);
     if (logging) adapter.log.debug('RealSkyMinimum: ' + realsky_min);
     adapter.setState(idRealSkyMin, {ack: true, val: realsky_min});                    // Wert in Objekt schreiben
@@ -188,8 +177,8 @@ function findeWertRealskyMinimum (body) {
 }
  
 function findeWertRealskyMaximum (body) {   
-    var text1 = "<td class=xl2725883>-</td>",                       // erstes Auftauchen
-        text2 = "<td class=xl2425883>kWh/kWp</td>";                 // letztes Auftauchen
+    var text1 = "<td class=xl6825883>-</td>",                       // erstes Auftauchen
+        text2 = "<td class=xl6525883>kWh/kWp</td>";                 // letztes Auftauchen
     var realsky_max = erstes_letztesAuftauchen(body,text1,text2);
     if (logging) adapter.log.debug('RealSkyMaximum: ' + realsky_max);
     adapter.setState(idRealSkyMax, {ack: true, val: realsky_max});                    // Wert in Objekt schreiben
@@ -206,7 +195,7 @@ function findeDatum (body) {
 }
 
 function leseWebseite () {
-    var link = 'http://' + username + ':' + password + '@www.vorhersage-plz-bereich.solar-wetter.com/html/' + plz + '.html';
+    var link = 'http://www.vorhersage-plz-bereich.solar-wetter.com/html/' + plz + '.htm';
     if (!plz || plz.length < 3) {
         adapter.log.warn('Kein PLZ-Bereich festgelegt. Adapter wird angehalten');
         adapter.stop;

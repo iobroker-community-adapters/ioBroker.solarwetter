@@ -78,16 +78,6 @@
                 "en": "Choose a city",
                 "de": "Wählen Sie eine Stadt",
                 "ru": "Translate to ru please: Choose a city"
-            },
-            "Username": {
-                "en": "Username",
-                "de": "Benutzername",
-                "ru": "Username"
-            },
-            "Password": {
-                "en": "Password",
-                "de": "Passwort",
-                "ru": "Password"
             }
         };
    
@@ -117,8 +107,7 @@
             $('#power').val(settings.power).change(onChange).keyup(onChange);
             
             // Login
-            $('#solaruser').val(settings.solarusername).change(onChange).keyup(onChange);
-            $('#solarpass').val(settings.solarpassword).change(onChange).keyup(onChange);
+            // deprecated in 2022/03 due to changes on website
             
             onChange(false);
         }
@@ -127,9 +116,7 @@
             callback({
                 location: $('#location').val(),
                 power: $('#power').val().replace(/,/, "."),
-                prognoseort: $('#city').val(),
-                solarusername: $('#solaruser').val(),
-                solarpassword: $('#solarpass').val()
+                prognoseort: $('#city').val()
             }); // nicht nur . statt , später auch Plausibilität
         }
     </script>
@@ -142,17 +129,7 @@
             </tr>
         </table>
         
-        <h4 class="translate subline" style="width: calc(100% - 10px)">Login</h4>
-        <table id="owndevice" style="margin-top: 20px; width: calc(100% - 5px)">
-            <tr>
-                <td class="translate description">Username</td>
-                <td class="inputvalue"><input type="text" id="solaruser" class="value" size="20" maxlength ="25" style="text-align: right"/></td>
-            </tr>
-            <tr>
-                <td class="translate description">Password</td>
-                <td class="inputvalue"><input type="password" id="solarpass" class="value" size="20" maxlength ="25" style="text-align: right"/></td>
-            </tr>
-        </table>
+        <!-- removed Login section -->
         
         <h4 class="translate subline" style="width: calc(100% - 10px)">Postcode</h4>
         <table style="width: calc(100% - 5px)">

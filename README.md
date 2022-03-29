@@ -18,9 +18,9 @@ Translate!!!!
 
 ## Einstellungen / Configuration
 ### User / Passwort
-Seit 2017 ist die Authentifizierung beim Anbieter nötig. Dazu muss kostenpflichtig beim Anbieter ein Zugang erstanden werden. Die Login-Daten können nun hier im Adapter hinterlegt werden.
+Seit 2022/03 ist die Authentifizierung beim Anbieter nicht mehr nötig.
 
-Since 2017 the provider is charging for its service. A personal login can be obtained on solar-wetter.com. username and password will be stored here.
+Since 2022/03 authentication is no longer needed.
 
 ### Standort / Location
 Örtlichkeit durch Auswahl des Postleitzahlenbereichs bestimmen
