@@ -37,9 +37,9 @@
             "Pix"
         ],
         "license": "MIT",
-        "readme": "https://github.com/Pix---/ioBroker.solarwetter/blob/master/README.md",
+        "readme": "https://github.com/motuditli/ioBroker.solarwetter/blob/master/README.md",
         "icon": "solarwetter.png",
-        "extIcon": "https://raw.githubusercontent.com/Pix---/ioBroker.solarwetter/master/admin/solarwetter.png",
+        "extIcon": "https://raw.githubusercontent.com/motuditli/ioBroker.solarwetter/master/admin/solarwetter.png",
         "allowInit": true,
         "type": "weather",
         "config": {
