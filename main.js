@@ -77,7 +77,7 @@ function readSettings() {
     } else {
         adapter.log.info('Leistung eigene Anlage: '+ power + ' kWp');
     }
-    adapter.setState(idHomeAnlage, power, true);
+    adapter.setState(idHomeAnlage, parseFloat(power), true);
     
     
     leseWebseite();
