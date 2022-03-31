@@ -8,7 +8,7 @@
             "ru": "prognostizierter Solarstrom Tagesertrag solar-wetter.com - translate to russian, please"
         },
         "news": {
-	    "1.0.1": {
+	    "1.0.2": {
                 "en": "Adjusted for Website Changes - removal of authentication",
                 "de": "Anpassungen aufgrund geaenderter Website, Authentifizierung entfernt",
                 "ru": "Adjusted for Website Changes - removal of authentication"
@@ -23,9 +23,9 @@
                 "ru": "Username & password Login provided"
 	    }
 	},
-        "version": "1.0.1",
+        "version": "1.0.2",
         "mode": "schedule",
-        "schedule": "17 8 * * *",
+        "schedule": "17 5 * * *",
         "platform": "javascript/Node.js",
         "loglevel": "info",
         "keywords": [
