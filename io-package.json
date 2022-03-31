@@ -118,7 +118,7 @@
                 "name": "Solar-Wetter.com Datum der letzten Aktualisierung",
                 "desc": "letzte Aktualisierung der Webseite",
                 "type": "string",
-                "role": "date",
+                "role": "state",
                 "read": true,
                 "write": false
             },
