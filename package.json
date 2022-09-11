@@ -6,15 +6,15 @@
   "contributors": [
     "pix"
   ],
-  "homepage": "https://github.com/Pix---/ioBroker.solarwetter",
+  "homepage": "https://github.com/iobroker-community-adapters/ioBroker.solarwetter",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Pix---/ioBroker.solarwetter"
+    "url": "https://github.com/iobroker-community-adapters/ioBroker.solarwetter"
   },
   "license": [
     {
       "type": "MIT",
-      "url": "https://github.com/Pix---/ioBroker.solarwetter/blob/master/LICENSE"
+      "url": "https://github.com/iobroker-community-adapters/ioBroker.solarwetter/blob/master/LICENSE"
     }
   ],
   "keywords": [
@@ -44,7 +44,7 @@
     "chai": "^4.1.2"
   },
   "bugs": {
-    "url": "https://github.com/Pix---/ioBroker.solarwetter/issues"
+    "url": "https://github.com/iobroker-community-adapters/ioBroker.solarwetter/issues"
   },
   "main": "main.js",
   "scripts": {
