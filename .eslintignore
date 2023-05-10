@@ -1,2 +1,7 @@
 **/.eslintrc.js
 admin/words.js
+
+
+lib\**
+admin\**
+solarwetter.js
