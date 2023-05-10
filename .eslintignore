@@ -2,6 +2,6 @@
 admin/words.js
 
 
-lib\**
-admin\**
+lib*/*
+admin/**
 solarwetter.js
