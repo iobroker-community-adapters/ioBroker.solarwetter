@@ -17,13 +17,13 @@ Translate!!!!
 ### User / Passwort
 Seit 2017 ist die Authentifizierung beim Anbieter nötig. Dazu muss kostenpflichtig beim Anbieter ein Zugang erstanden werden. Die Login-Daten können nun hier im Adapter hinterlegt werden.
 
-Since 2017 the provider is charging for its service. A personal login can be obtained on solar-wetter.com. username and password will be stored here.
+Since 2017, the provider is charging for its service. A personal login can be obtained on solar-wetter.com. username and password will be stored here.
 
 ### Standort / Location
 Örtlichkeit durch Auswahl des Postleitzahlenbereichs bestimmen
 Gesamtleistung der eigenen Solaranlage zur Berechnung der Energieerzeugung
 
-Choose your region by selecting from the list of post codes.
+Choose your region by selecting from the list of post-codes.
 Type in power of your solar plant to calculate energy output.
 
 ### Solaranlage / Solar plant
@@ -108,13 +108,13 @@ solarwetter.0.forecast.chart.__url__ (*value*)
 
 ## ToDo
 * Translation of Datapoints
-* Russian translation of settings window
+* Russian translation of a settings window
 
 ## License
 
 The MIT License (MIT)
 
-Copyright (c) 2020 pix
+Copyright (c) 2020-2023 pix
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
