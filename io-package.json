@@ -46,13 +46,12 @@
     "icon": "solarwetter.png",
     "extIcon": "https://raw.githubusercontent.com/iobroker-community-adapters/ioBroker.solarwetter/master/admin/solarwetter.png",
     "allowInit": true,
-    "type": "weather",
-    "config": {
-      "width": 650,
-      "height": 500,
-      "minWidth": 650,
-      "minHeight": 450
-    }
+    "connectionType": "cloud",
+    "dataSource": "poll",
+    "adminUI": {
+      "config": "json"
+    },
+    "type": "weather"
   },
   "native": {
     "location": "select",

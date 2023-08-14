@@ -65,8 +65,8 @@ function readSettings() {
         adapter.log.debug(`URL für Bild: http://www.solar-wetter.com/assets/${city}%20Vorhersage-Diagramm.GIF`);
     }
 
-    power = adapter.config.power;
-    if (power === undefined || power === 0) {
+    power = parseFloat(adapter.config.power);
+    if (!power) {
         adapter.log.warn('Keine Leistung für die eigene Anlage angegeben'); // Translate!
         power = 0;
     } else {
