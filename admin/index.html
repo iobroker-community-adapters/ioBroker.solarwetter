@@ -19,14 +19,14 @@
 
     <style>
         .description {
-            font-size: smaller;	
+            font-size: smaller;
         }
         .headline {
         	padding-top: 20px;
         	padding-left: 10px;
         }
         .subline {
-        
+
         }
         .inputvalue {
             width: 20%;
@@ -78,58 +78,45 @@
                 "en": "Choose a city",
                 "de": "Wählen Sie eine Stadt",
                 "ru": "Translate to ru please: Choose a city"
-            },
-            "Username": {
-                "en": "Username",
-                "de": "Benutzername",
-                "ru": "Username"
-            },
-            "Password": {
-                "en": "Password",
-                "de": "Passwort",
-                "ru": "Password"
             }
         };
-   
+
         function load(settings, onChange) {
             // Postleitzahlen
             $('#location').val(settings.location).change(onChange).keyup(onChange);
-              
-            // Wertelist aus plz einbauen          
+
+            // Wertelist aus plz einbauen
             var text = '';
             for (var p in plz) {
                 text += '<option value="' + plz[p] + '">' + plz[p] + '</option>\n';
             }
             $('#areacodelist').append(text);
-            
+
             // Show correct Area Code when already defined
             $('#location').val(settings.location).change(onChange)
-            
+
             // 4-tages-prognose
             $('#city').val(settings.prognoseort).change(onChange).keyup(onChange);
             // Insert to HTML Code from cities.js
             $('#city').append(city);
-            
+
             // Show correct Area Code when already defined
             $('#city').val(settings.prognoseort).change(onChange)
-            
+
             // Strom
             $('#power').val(settings.power).change(onChange).keyup(onChange);
-            
+
             // Login
-            $('#solaruser').val(settings.solarusername).change(onChange).keyup(onChange);
-            $('#solarpass').val(settings.solarpassword).change(onChange).keyup(onChange);
-            
+            // deprecated in 2022/03 due to changes on website
+
             onChange(false);
         }
-        
+
         function save(callback) {
             callback({
                 location: $('#location').val(),
                 power: $('#power').val().replace(/,/, "."),
-                prognoseort: $('#city').val(),
-                solarusername: $('#solaruser').val(),
-                solarpassword: $('#solarpass').val()
+                prognoseort: $('#city').val()
             }); // nicht nur . statt , später auch Plausibilität
         }
     </script>
@@ -141,19 +128,9 @@
                 <td class="headline"><h3 class="translate">solarwetter Adapter settings</h3></td>
             </tr>
         </table>
-        
-        <h4 class="translate subline" style="width: calc(100% - 10px)">Login</h4>
-        <table id="owndevice" style="margin-top: 20px; width: calc(100% - 5px)">
-            <tr>
-                <td class="translate description">Username</td>
-                <td class="inputvalue"><input type="text" id="solaruser" class="value" size="20" maxlength ="25" style="text-align: right"/></td>
-            </tr>
-            <tr>
-                <td class="translate description">Password</td>
-                <td class="inputvalue"><input type="password" id="solarpass" class="value" size="20" maxlength ="25" style="text-align: right"/></td>
-            </tr>
-        </table>
-        
+
+        <!-- removed Login section -->
+
         <h4 class="translate subline" style="width: calc(100% - 10px)">Postcode</h4>
         <table style="width: calc(100% - 5px)">
             <tr>
@@ -178,9 +155,7 @@
                 <td class="inputvalue"><input type="text" id="power" class="value" size="10" style="text-align: right"/> kWp</td>
             </tr>
         </table>
-        
-        
-        
+
         <h4 class="translate subline" style="width: calc(100% - 10px)">4-Tage-Vorhersage</h4>
         <table style="width: calc(100% - 5px)">
             <tr>
@@ -192,6 +167,6 @@
                 </td>
             </tr>
         </table>
-        
+
     </div>
 </html>

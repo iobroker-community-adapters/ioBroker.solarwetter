@@ -1,42 +1,36 @@
-/* jshint -W097 */// jshint strict:false
-/*jslint node: true */
+const utils = require('@iobroker/adapter-core'); // Get common adapter utils
+const axios = require('axios');
+let lang = 'de';
 
-"use strict";
-var utils = require('@iobroker/adapter-core'); // Get common adapter utils
-var request     = require('request');
-var lang = 'de';
-
-var adapter = utils.Adapter({
-    name:           'solarwetter',
-    systemConfig:   true,
-    useFormatDate:  true
+const adapter = utils.Adapter({
+    name: 'solarwetter',
+    systemConfig: true,
+    useFormatDate: true
 });
 
-var plz;
-var city;
-var power;
-var link;
-var username;
-var password;
+let plz;
+let city;
+let power;
+/* removed username & password 2022/03 */
 
-var logging = false;
+const logging = false;
 
-var idClearSky =       'forecast.clearSky',
-    idRealSkyMin =     'forecast.realSky_min',
-    idRealSkyMax =     'forecast.realSky_max',
-    idDatum =          'forecast.Datum',
-    idPLZ =            'forecast.Region',
-    idPrognose =       'forecast.chart.city',
-    idPrognoseURL =    'forecast.chart.url',
-    idHomeAnlage =     'forecast.home.Leistung',
-    idHomeClearSky =   'forecast.home.clearSky',
-    idHomeRealSkyMin = 'forecast.home.realSky_min',
-    idHomeRealSkyMax = 'forecast.home.realSky_max';
-    
-adapter.on('ready', function () {
-    adapter.getForeignObject('system.config', function (err, data) {
+const idClearSky = 'forecast.clearSky';
+const idRealSkyMin = 'forecast.realSky_min';
+const idRealSkyMax = 'forecast.realSky_max';
+const idDatum = 'forecast.Datum';
+const idPLZ = 'forecast.Region';
+const idPrognose = 'forecast.chart.city';
+const idPrognoseURL = 'forecast.chart.url';
+const idHomeAnlage = 'forecast.home.Leistung';
+const idHomeClearSky = 'forecast.home.clearSky';
+const idHomeRealSkyMin = 'forecast.home.realSky_min';
+const idHomeRealSkyMax = 'forecast.home.realSky_max';
+
+adapter.on('ready', () => {
+    adapter.getForeignObject('system.config', (err, data) => {
         if (data && data.common) {
-            lang  = data.common.language;
+            lang = data.common.language;
         }
 
         adapter.log.debug('initializing objects');
@@ -52,181 +46,169 @@ adapter.on('ready', function () {
 
 
 function readSettings() {
-    username = adapter.config.solarusername;
-    if (username === undefined || username === "") {
-        adapter.log.error('Enter username!'); // Translate!
-        adapter.stop();
-    }
-    password = adapter.config.solarpassword;
-    if (password === undefined || password === "") {
-        adapter.log.error('Enter password!'); // Translate!
-        adapter.stop();
-    }
     plz = adapter.config.location;
-    if (plz === undefined || plz === 0 || plz === "select") {
+    if (plz === undefined || plz === 0 || plz === 'select') {
         adapter.log.warn('Keine Region ausgewählt'); // Translate!
         adapter.stop();
     } else {
-        adapter.log.info('Postcode: '+ plz);
+        adapter.log.info(`Postcode: ${plz}`);
         adapter.setState(idPLZ, plz, true);
     }
     city = adapter.config.prognoseort;
-    if (!city || city === undefined || city.search(/(- )\b\b/gmi) != -1) {
+    if (!city || city.search(/(- )\b\b/gmi) !== -1) {
         adapter.log.warn('Keine Stadt für eine 4-Tage-Prognose ausgewählt'); // Translate!
         adapter.stop();
     } else {
-        adapter.log.info('4-Tage-Prognose für: '+ city);
+        adapter.log.info(`4-Tage-Prognose für: ${city}`);
         adapter.setState(idPrognose, city, true);
-        adapter.setState(idPrognoseURL, 'http://www.solar-wetter.com/assets/' + city + '%20Vorhersage-Diagramm.GIF', true);
-        adapter.log.debug('URL für Bild: http://www.solar-wetter.com/assets/' + city + '%20Vorhersage-Diagramm.GIF');
+        adapter.setState(idPrognoseURL, `http://www.solar-wetter.com/assets/${city}%20Vorhersage-Diagramm.GIF`, true);
+        adapter.log.debug(`URL für Bild: http://www.solar-wetter.com/assets/${city}%20Vorhersage-Diagramm.GIF`);
     }
-    
+
     power = adapter.config.power;
     if (power === undefined || power === 0) {
         adapter.log.warn('Keine Leistung für die eigene Anlage angegeben'); // Translate!
         power = 0;
     } else {
-        adapter.log.info('Leistung eigene Anlage: '+ power + ' kWp');
+        adapter.log.info(`Leistung eigene Anlage: ${power} kWp`);
     }
-    adapter.setState(idHomeAnlage, power, true);
-    
-    
+    adapter.setState(idHomeAnlage, parseFloat(power), true);
+
+
     leseWebseite();
-} 
-
-function erstes_erstesAuftauchen(body,text1,text2) {
-    var start = body.indexOf(text1) + text1.length;
-    var ende = body.indexOf(text2);
-    if (logging) adapter.log.debug('Startposition: ' + start);
-    if (logging) adapter.log.debug('Endposition: ' + ende);
-    var zwischenspeicher;
-    if (((start != -1) && (ende != -1)) && (start<ende)) {                      // Fehler abfangen
-        zwischenspeicher = body.slice(start,ende);
-        if (logging) adapter.log.debug(zwischenspeicher);
-        var zwischenspeicher_array =  zwischenspeicher.split(',');              // Teilen vorm Komma
-        var zwischenspeicher_array_vorn = zwischenspeicher_array[0].slice(zwischenspeicher_array[0].length-1,zwischenspeicher_array[0].length); // eine Stelle vorm Komma
-        if (logging) adapter.log.debug(zwischenspeicher_array_vorn);
-        var zwischenspeicher_array_hinten = zwischenspeicher_array[1].slice(0,2);   // zwei Stellen nach dem Komma
-        if (logging) adapter.log.debug(zwischenspeicher_array_hinten);
-        return(parseFloat(zwischenspeicher_array_vorn + '.' + zwischenspeicher_array_hinten));
-    } else {
-        zwischenspeicher = 'Fehler beim Ausschneiden';
-        adapter.log.error(zwischenspeicher);
-        adapter.stop();
-        return(0);
-    }
 }
 
-function erstes_letztesAuftauchen(body,text1,text2) {
-    var start = body.indexOf(text1) + text1.length;
-    var ende = body.lastIndexOf(text2);                                         // letztes Auftauchen
-    if (logging) adapter.log.debug('Startposition: ' + start);
-    if (logging) adapter.log.debug('Endposition: ' + ende);
-    var zwischenspeicher;
-    if (((start != -1) && (ende != -1)) && (start<ende)) {                      // Fehler abfangen
-        zwischenspeicher = body.slice(start,ende);
-        if (logging) adapter.log.debug(zwischenspeicher);
-        var zwischenspeicher_array =  zwischenspeicher.split(',');              // Teilen vorm Komma
-        var zwischenspeicher_array_vorn = zwischenspeicher_array[0].slice(zwischenspeicher_array[0].length-1,zwischenspeicher_array[0].length); // eine Stelle vorm Komma
-        if (logging) adapter.log.debug(zwischenspeicher_array_vorn);
-        var zwischenspeicher_array_hinten = zwischenspeicher_array[1].slice(0,2);   // zwei Stellen nach dem Komma
-        if (logging) adapter.log.debug(zwischenspeicher_array_hinten);
-        return(parseFloat(zwischenspeicher_array_vorn + '.' + zwischenspeicher_array_hinten));
-    } else {
-        zwischenspeicher = 'Fehler beim Ausschneiden';
-        adapter.log.error(zwischenspeicher);
-        adapter.stop();
-        return(0);
+function erstes_erstesAuftauchen(body, text1, text2) {
+    const start = body.indexOf(text1) + text1.length;
+    const ende = body.indexOf(text2);
+    logging && adapter.log.debug(`Startposition: ${start}`);
+    logging && adapter.log.debug(`Endposition: ${ende}`);
+    let zwischenspeicher;
+    if (start !== -1 && ende !== -1 && start < ende) {                      // Fehler abfangen
+        zwischenspeicher = body.slice(start, ende);
+        logging && adapter.log.debug(zwischenspeicher);
+        const zwischenspeicher_array = zwischenspeicher.split(',');              // Teilen vorm Komma
+        const zwischenspeicher_array_vorn = zwischenspeicher_array[0].slice(zwischenspeicher_array[0].length - 1, zwischenspeicher_array[0].length); // eine Stelle vorm Komma
+        logging && adapter.log.debug(zwischenspeicher_array_vorn);
+        const zwischenspeicher_array_hinten = zwischenspeicher_array[1].slice(0, 2);   // zwei Stellen nach dem Komma
+        logging && adapter.log.debug(zwischenspeicher_array_hinten);
+        return parseFloat(`${zwischenspeicher_array_vorn}.${zwischenspeicher_array_hinten}`);
     }
+
+    zwischenspeicher = 'Fehler beim Ausschneiden';
+    adapter.log.error(zwischenspeicher);
+    adapter.stop();
+    return 0;
 }
 
-function loeseDatum (body,text1) {
-    var start = body.indexOf(text1) - 5;
-    var ende = body.indexOf(text1) + 5;                                         // xx.xx.xxxx
-    if (logging) adapter.log.debug('Startposition: ' + start);
-    if (logging) adapter.log.debug('Endposition: ' + ende);
-    var zwischenspeicher;
-    if ((start != -1) && (ende != -1)) {                                        // Fehler abfangen
-        zwischenspeicher = body.slice(start,ende);
-        var datum_array = zwischenspeicher.split('.');
-        var xDatum = new Date();
-        if (logging) adapter.log.debug('Tag: ' + datum_array[0]);
-        if (logging) adapter.log.debug('Monat: ' + datum_array[1]);
-        if (logging) adapter.log.debug('Jahr: ' + datum_array[2]);
+function erstes_letztesAuftauchen(body, text1, text2) {
+    const start = body.indexOf(text1) + text1.length;
+    const ende = body.lastIndexOf(text2);                                         // letztes Auftauchen
+    logging && adapter.log.debug(`Startposition: ${start}`);
+    logging && adapter.log.debug(`Endposition: ${ende}`);
+    let zwischenspeicher;
+    if (start !== -1 && ende !== -1 && start < ende) {                      // Fehler abfangen
+        zwischenspeicher = body.slice(start, ende);
+        logging && adapter.log.debug(zwischenspeicher);
+        const zwischenspeicher_array = zwischenspeicher.split(',');              // Teilen vorm Komma
+        const zwischenspeicher_array_vorn = zwischenspeicher_array[0].slice(zwischenspeicher_array[0].length - 1, zwischenspeicher_array[0].length); // eine Stelle vorm Komma
+        logging && adapter.log.debug(zwischenspeicher_array_vorn);
+        const zwischenspeicher_array_hinten = zwischenspeicher_array[1].slice(0, 2);   // zwei Stellen nach dem Komma
+        logging && adapter.log.debug(zwischenspeicher_array_hinten);
+        return parseFloat(`${zwischenspeicher_array_vorn}.${zwischenspeicher_array_hinten}`);
+    }
+    zwischenspeicher = 'Fehler beim Ausschneiden';
+    adapter.log.error(zwischenspeicher);
+    adapter.stop();
+    return 0;
+}
+
+function loeseDatum(body, text1) {
+    const start = body.indexOf(text1) - 5;
+    const ende = body.indexOf(text1) + 5;                                         // xx.xx.xxxx
+    logging && adapter.log.debug(`Startposition: ${start}`);
+    logging && adapter.log.debug(`Endposition: ${ende}`);
+    let zwischenspeicher;
+    if (start !== -1 && ende !== -1) {                                        // Fehler abfangen
+        zwischenspeicher = body.slice(start, ende);
+        const datum_array = zwischenspeicher.split('.');
+        const xDatum = new Date();
+        logging && adapter.log.debug(`Tag: ${datum_array[0]}`);
+        logging && adapter.log.debug(`Monat: ${datum_array[1]}`);
+        logging && adapter.log.debug(`Jahr: ${datum_array[2]}`);
         xDatum.setDate(datum_array[0]);
-        xDatum.setMonth(datum_array[1]-1);
+        xDatum.setMonth(datum_array[1] - 1);
         xDatum.setFullYear(datum_array[2]);
-        if (logging) adapter.log.debug(xDatum);
+        logging && adapter.log.debug(xDatum);
         //return(formatDate(xDatum, "TT.MM.JJJJ"));
-        var xDatum_workaround = (xDatum.getDate() <10 ? '0' + xDatum.getDate() : xDatum.getDate() ) + '.' + (xDatum.getMonth()+1 <10 ? '0' + (xDatum.getMonth()+1) : xDatum.getMonth()+1) + '.' + xDatum.getFullYear(); 
-        return(xDatum_workaround);
-        
-    } else {
-        zwischenspeicher = 'Fehler beim Ausschneiden';
-        adapter.log.error(zwischenspeicher);
-        adapter.stop();
-        return(null);
+        const xDatum_workaround = `${xDatum.getDate() < 10 ? `0${xDatum.getDate()}` : xDatum.getDate()}.${xDatum.getMonth() + 1 < 10 ? `0${xDatum.getMonth() + 1}` : xDatum.getMonth() + 1}.${xDatum.getFullYear()}`;
+        return xDatum_workaround;
     }
+    zwischenspeicher = 'Fehler beim Ausschneiden';
+    adapter.log.error(zwischenspeicher);
+    adapter.stop();
+    return null;
 }
 
-function findeWertClearsky (body) {   
-    var text1 = "<td height=17 class=xl1525883 style='height:12.75pt'>clear sky:</td>", // erstes Auftauchen
-        text2 = "<td class=xl2425883>kWh/kWp</td>";                 // erstes Auftauchen
-    var clearsky = erstes_erstesAuftauchen(body,text1,text2);
-    if (logging) adapter.log.debug('ClearSky: ' + clearsky);
+function findeWertClearsky (body) {
+    const text1 = "<td height=17 class=xl1525883 style='height:12.75pt'>clear sky:</td>"; // erstes Auftauchen
+    const text2 = "<td class=xl6525883>kWh/kWp</td>";                 // erstes Auftauchen
+    const clearsky = erstes_erstesAuftauchen(body,text1,text2);
+    logging && adapter.log.debug(`ClearSky: ${clearsky}`);
     adapter.setState(idClearSky, {ack: true, val: clearsky});                         // Wert in Objekt schreiben
     adapter.setState(idHomeClearSky, {ack: true, val: clearsky * power});             // Wert in Objekt schreiben
 }
 
-function findeWertRealskyMinimum (body) {   
-    var text1 = "real sky:</td>",                                   // erstes Auftauchen
-        text2 = "<td class=xl2725883>-</td>";                       // erstes Auftauchen
-    var realsky_min = erstes_erstesAuftauchen(body,text1,text2);
-    if (logging) adapter.log.debug('RealSkyMinimum: ' + realsky_min);
+function findeWertRealskyMinimum (body) {
+    const text1 = 'real sky:</td>';                                   // erstes Auftauchen
+    const text2 = '<td class=xl6825883>-</td>';                       // erstes Auftauchen
+    const realsky_min = erstes_erstesAuftauchen(body,text1,text2);
+    logging && adapter.log.debug(`RealSkyMinimum: ${realsky_min}`);
     adapter.setState(idRealSkyMin, {ack: true, val: realsky_min});                    // Wert in Objekt schreiben
     adapter.setState(idHomeRealSkyMin, {ack: true, val: realsky_min * power});        // Wert in Objekt schreiben
 }
- 
-function findeWertRealskyMaximum (body) {   
-    var text1 = "<td class=xl2725883>-</td>",                       // erstes Auftauchen
-        text2 = "<td class=xl2425883>kWh/kWp</td>";                 // letztes Auftauchen
-    var realsky_max = erstes_letztesAuftauchen(body,text1,text2);
-    if (logging) adapter.log.debug('RealSkyMaximum: ' + realsky_max);
+
+function findeWertRealskyMaximum (body) {
+    const text1 = '<td class=xl6825883>-</td>';                       // erstes Auftauchen
+    const text2 = '<td class=xl6525883>kWh/kWp</td>';                 // letztes Auftauchen
+    const realsky_max = erstes_letztesAuftauchen(body,text1,text2);
+    logging && adapter.log.debug(`RealSkyMaximum: ${realsky_max}`);
     adapter.setState(idRealSkyMax, {ack: true, val: realsky_max});                    // Wert in Objekt schreiben
     adapter.setState(idHomeRealSkyMax, {ack: true, val: realsky_max * power});        // Wert in Objekt schreiben
 }
 
-function findeDatum (body) {   
-    var jetzt = new Date();
-    var Jahr = jetzt.getFullYear();                                 // aktuelles Jahr ermitteln
-    var text1 = '.'+ Jahr +'</td>';                                 // erstes Auftauchen vom aktuellen Jahr finden
-    var datum = loeseDatum(body,text1);
-    if (logging) adapter.log.debug('Datum: ' + datum);
+function findeDatum(body) {
+    const jetzt = new Date();
+    const Jahr = jetzt.getFullYear();                                 // aktuelles Jahr ermitteln
+    const text1 = `.${Jahr}</td>`;                                 // erstes Auftauchen vom aktuellen Jahr finden
+    const datum = loeseDatum(body, text1);
+    logging && adapter.log.debug(`Datum: ${datum}`);
     adapter.setState(idDatum, {ack: true, val: datum});                                       // Wert in Objekt schreiben
 }
 
 function leseWebseite () {
-    var link = 'http://' + username + ':' + password + '@www.vorhersage-plz-bereich.solar-wetter.com/html/' + plz + '.html';
+    const link = `http://www.vorhersage-plz-bereich.solar-wetter.com/html/${plz}.htm`;
+    logging && adapter.log.debug(`link to be retrieved: ${link}`);
     if (!plz || plz.length < 3) {
         adapter.log.warn('Kein PLZ-Bereich festgelegt. Adapter wird angehalten');
         adapter.stop;
     }
     try {
-        request(link, function (error, response, body) {
-            if (!error && response.statusCode == 200) {              // kein Fehler, Inhalt in body
+        axios(link)
+            .then(response => {
+                const body = response.data;
                 findeWertClearsky(body);
                 findeWertRealskyMinimum(body);
                 findeWertRealskyMaximum(body);
                 findeDatum(body);
-            } else adapter.log.error(error);                               // Error beim Einlesen
-        });
+            })
+            .catch(error => adapter.log.error(error));
     } catch (e) {
-        adapter.log.error('Fehler (try) leseWebseite: ' + e);
-    }   
+        adapter.log.error(`Fehler (try) leseWebseite: ${e}`);
+    }
 }
 
 function main() {
     readSettings();
     adapter.log.info('objects written');
-    //adapter.stop();
 }
