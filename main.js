@@ -11,8 +11,7 @@ const adapter = utils.Adapter({
 let plz;
 let city;
 let power;
-let username;
-let password;
+/* removed username & password 2022/03 */
 
 const logging = false;
 
@@ -47,16 +46,6 @@ adapter.on('ready', () => {
 
 
 function readSettings() {
-    username = adapter.config.solarusername;
-    if (username === undefined || username === '') {
-        adapter.log.error('Enter username!'); // Translate!
-        adapter.stop();
-    }
-    password = adapter.config.solarpassword;
-    if (password === undefined || password === '') {
-        adapter.log.error('Enter password!'); // Translate!
-        adapter.stop();
-    }
     plz = adapter.config.location;
     if (plz === undefined || plz === 0 || plz === 'select') {
         adapter.log.warn('Keine Region ausgewählt'); // Translate!
@@ -83,7 +72,7 @@ function readSettings() {
     } else {
         adapter.log.info(`Leistung eigene Anlage: ${power} kWp`);
     }
-    adapter.setState(idHomeAnlage, power, true);
+    adapter.setState(idHomeAnlage, parseFloat(power), true);
 
 
     leseWebseite();
@@ -117,7 +106,7 @@ function erstes_letztesAuftauchen(body, text1, text2) {
     const ende = body.lastIndexOf(text2);                                         // letztes Auftauchen
     logging && adapter.log.debug(`Startposition: ${start}`);
     logging && adapter.log.debug(`Endposition: ${ende}`);
-    const zwischenspeicher;
+    let zwischenspeicher;
     if (start !== -1 && ende !== -1 && start < ende) {                      // Fehler abfangen
         zwischenspeicher = body.slice(start, ende);
         logging && adapter.log.debug(zwischenspeicher);
@@ -139,7 +128,7 @@ function loeseDatum(body, text1) {
     const ende = body.indexOf(text1) + 5;                                         // xx.xx.xxxx
     logging && adapter.log.debug(`Startposition: ${start}`);
     logging && adapter.log.debug(`Endposition: ${ende}`);
-    const zwischenspeicher;
+    let zwischenspeicher;
     if (start !== -1 && ende !== -1) {                                        // Fehler abfangen
         zwischenspeicher = body.slice(start, ende);
         const datum_array = zwischenspeicher.split('.');
@@ -161,28 +150,28 @@ function loeseDatum(body, text1) {
     return null;
 }
 
-function findeWertClearsky(body) {
-    const text1 = '<td height=17 class="xl1525883" style="height: 12.75pt">clear sky:</td>'; // erstes Auftauchen
-    const text2 = '<td class="xl2425883">kWh/kWp</td>';                 // erstes Auftauchen
-    const clearsky = erstes_erstesAuftauchen(body, text1, text2);
+function findeWertClearsky (body) {
+    const text1 = "<td height=17 class=xl1525883 style='height:12.75pt'>clear sky:</td>"; // erstes Auftauchen
+    const text2 = "<td class=xl6525883>kWh/kWp</td>";                 // erstes Auftauchen
+    const clearsky = erstes_erstesAuftauchen(body,text1,text2);
     logging && adapter.log.debug(`ClearSky: ${clearsky}`);
     adapter.setState(idClearSky, {ack: true, val: clearsky});                         // Wert in Objekt schreiben
     adapter.setState(idHomeClearSky, {ack: true, val: clearsky * power});             // Wert in Objekt schreiben
 }
 
-function findeWertRealskyMinimum(body) {
+function findeWertRealskyMinimum (body) {
     const text1 = 'real sky:</td>';                                   // erstes Auftauchen
-    const text2 = '<td class="xl2725883">-</td>';                       // erstes Auftauchen
-    const realsky_min = erstes_erstesAuftauchen(body, text1, text2);
+    const text2 = '<td class=xl6825883>-</td>';                       // erstes Auftauchen
+    const realsky_min = erstes_erstesAuftauchen(body,text1,text2);
     logging && adapter.log.debug(`RealSkyMinimum: ${realsky_min}`);
     adapter.setState(idRealSkyMin, {ack: true, val: realsky_min});                    // Wert in Objekt schreiben
     adapter.setState(idHomeRealSkyMin, {ack: true, val: realsky_min * power});        // Wert in Objekt schreiben
 }
 
-function findeWertRealskyMaximum(body) {
-    const text1 = '<td class="xl2725883">-</td>';                       // erstes Auftauchen
-    const text2 = '<td class="xl2425883">kWh/kWp</td>';                 // letztes Auftauchen
-    const realsky_max = erstes_letztesAuftauchen(body, text1, text2);
+function findeWertRealskyMaximum (body) {
+    const text1 = '<td class=xl6825883>-</td>';                       // erstes Auftauchen
+    const text2 = '<td class=xl6525883>kWh/kWp</td>';                 // letztes Auftauchen
+    const realsky_max = erstes_letztesAuftauchen(body,text1,text2);
     logging && adapter.log.debug(`RealSkyMaximum: ${realsky_max}`);
     adapter.setState(idRealSkyMax, {ack: true, val: realsky_max});                    // Wert in Objekt schreiben
     adapter.setState(idHomeRealSkyMax, {ack: true, val: realsky_max * power});        // Wert in Objekt schreiben
@@ -197,8 +186,9 @@ function findeDatum(body) {
     adapter.setState(idDatum, {ack: true, val: datum});                                       // Wert in Objekt schreiben
 }
 
-function leseWebseite() {
-    const link = `http://${username}:${password}@www.vorhersage-plz-bereich.solar-wetter.com/html/${plz}.html`;
+function leseWebseite () {
+    const link = `http://www.vorhersage-plz-bereich.solar-wetter.com/html/${plz}.htm`;
+    logging && adapter.log.debug(`link to be retrieved: ${link}`);
     if (!plz || plz.length < 3) {
         adapter.log.warn('Kein PLZ-Bereich festgelegt. Adapter wird angehalten');
         adapter.stop;

@@ -15,9 +15,9 @@ Translate!!!!
 
 ## Einstellungen / Configuration
 ### User / Passwort
-Seit 2017 ist die Authentifizierung beim Anbieter nötig. Dazu muss kostenpflichtig beim Anbieter ein Zugang erstanden werden. Die Login-Daten können nun hier im Adapter hinterlegt werden.
+Seit 2022/03 ist die Authentifizierung beim Anbieter nicht mehr nötig.
 
-Since 2017, the provider is charging for its service. A personal login can be obtained on solar-wetter.com. username and password will be stored here.
+Since 2022/03 authentication is no longer needed.
 
 ### Standort / Location
 Örtlichkeit durch Auswahl des Postleitzahlenbereichs bestimmen
@@ -67,9 +67,10 @@ solarwetter.0.forecast.chart.__city__ (*value*)
 
 solarwetter.0.forecast.chart.__url__ (*value*)
 
-
-
 ## Changelog
+### **WORK IN PROGRESS**
+* (motuditli) Adjusted for Website Changes - removal of authentication
+
 ### 1.0.0 (2017-10-15)
 * (pix) End of beta, Nodejs 4 or higher required
 

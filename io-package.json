@@ -26,7 +26,7 @@
     },
     "version": "1.0.0",
     "mode": "schedule",
-    "schedule": "17 8 * * *",
+    "schedule": "17 5 * * *",
     "platform": "Javascript/Node.js",
     "loglevel": "info",
     "keywords": [
@@ -119,7 +119,7 @@
         "name": "Solar-Wetter.com Datum der letzten Aktualisierung",
         "desc": "letzte Aktualisierung der Webseite",
         "type": "string",
-        "role": "date",
+        "role": "state",
         "read": true,
         "write": false
       },
