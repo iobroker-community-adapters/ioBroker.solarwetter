@@ -69,7 +69,7 @@ The adapter starts once a day.
 
 <!-- ### **WORK IN PROGRESS** -->
 ## Changelog
-### 1.1.1 (2023-08-15)
+### **WORK IN PROGRESS**
 * (motuditli) Adjusted for Website Changes - removal of authentication
 * (bluefox) Added compact mode and JSON config
 

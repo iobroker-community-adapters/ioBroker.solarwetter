@@ -1,7 +1,6 @@
 const adapterName    = require('./package.json').name.split('.').pop();
 const utils = require('@iobroker/adapter-core'); // Get common adapter utils
 const axios = require('axios');
-let lang = 'de';
 
 let plz;
 let city;
@@ -29,25 +28,8 @@ function startAdapter(options) {
     options = options || {};
 
     Object.assign(options, {
-        systemConfig: true,
-        useFormatDate: true,
         name: adapterName,
-        ready: () => {
-            adapter.getForeignObject('system.config', (err, data) => {
-                if (data && data.common) {
-                    lang = data.common.language;
-                }
-
-                adapter.log.debug('initializing objects');
-                main();
-
-                stopTimeout = setTimeout(() => {
-                    adapter.log.info('force terminating adapter after 1 minute');
-                    adapter.stop();
-                }, 60000);
-
-            });
-        },
+        ready: () => main(),
         unload: callback => {
             stopTimeout && clearTimeout(stopTimeout);
             stopTimeout = null;
@@ -153,7 +135,7 @@ function loeseDatum(body, text1) {
         xDatum.setMonth(datum_array[1] - 1);
         xDatum.setFullYear(datum_array[2]);
         logging && adapter.log.debug(xDatum);
-        //return(formatDate(xDatum, "TT.MM.JJJJ"));
+        // return(formatDate(xDatum, "TT.MM.JJJJ"));
         const xDatum_workaround = `${xDatum.getDate() < 10 ? `0${xDatum.getDate()}` : xDatum.getDate()}.${xDatum.getMonth() + 1 < 10 ? `0${xDatum.getMonth() + 1}` : xDatum.getMonth() + 1}.${xDatum.getFullYear()}`;
         return xDatum_workaround;
     }
@@ -224,6 +206,10 @@ function leseWebseite () {
 function main() {
     readSettings();
     adapter.log.info('objects written');
+    stopTimeout = setTimeout(() => {
+        adapter.log.info('force terminating adapter after 1 minute');
+        adapter.stop();
+    }, 60000);
 }
 
 // If started as allInOne mode => return function to create instance
