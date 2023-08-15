@@ -17,7 +17,7 @@ Translate!!!!
 ### User / Passwort
 Seit 2022/03 ist die Authentifizierung beim Anbieter nicht mehr nötig.
 
-Since 2022/03 authentication is no longer needed.
+Since 2022/03, authentication is no longer needed.
 
 ### Standort / Location
 Örtlichkeit durch Auswahl des Postleitzahlenbereichs bestimmen
@@ -27,14 +27,14 @@ Choose your region by selecting from the list of post-codes.
 Type in power of your solar plant to calculate energy output.
 
 ### Solaranlage / Solar plant
-Hier kann die Gesamtleistung der eigenen Solaranlage zur Bechnung der vorraussichtlich erzeugten Energiemenge eingegeben werden (auch Dezimalzahlen möglich).
+Hier kann die Gesamtleistung der eigenen Solaranlage zur Rechnung der voraussichtlich erzeugten Energiemenge eingegeben werden (auch Dezimalzahlen möglich).
 
 Put in the total power of your solar plant to calculate the daily forecast for energy production (decimal separators possible)
 
 ### 4-Tage-Prognose / 4-day-forecast
-Wählen Sie hier eine Stadt. Der Adapter erzeugt einen Link zu einem Chart mit der 4-Tage-Prognose (Datenpunkt solarwetter.0.forecast.chart.__url__ ).
+Wählen Sie hier eine Stadt. Der Adapter erzeugt einen Link zu einem Chart mit der 4-Tage-Prognose (Datenpunkt `solarwetter.0.forecast.chart.__url__` ).
 
-Choose a city to have the adapter build a link to a 4-day-forecast chart (datapoint solarwetter.0.forecast.chart.__url__ ).
+Choose a city to have the adapter build a link to a 4-day-forecast chart (datapoint `solarwetter.0.forecast.chart.__url__` ).
 
 ![alt text](img/solarwetterSettingScreenshot.jpg "Screenshot Settings")
 
