@@ -1,85 +1,85 @@
-"use strict";
-var city =  "<optgroup label='Baden-Württemberg'>"
-         +  "   <option value='Crailsheim'>Crailsheim</option>"
-         +  "   <option value='Freiburg'>Freiburg im Breisgau</option>"
-         +  "   <option value='Karlsruhe'>Karlsruhe</option>"
-         +  "   <option value='Mannheim'>Mannheim</option>"
-         +  "   <option value='Stuttgart'>Stuttgart</option>"
-         +  "   <option value='Tuttlingen'>Tuttlingen</option>"
-         +  "   <option value='Ulm'>Ulm</option>"
-         +  "</optgroup>"
-         +  "<optgroup label='Bayern'>"
-         +  "   <option value='Augsburg'>Augsburg</option>"
-         +  "   <option value='Bayreuth'>Bayreuth</option>"
-         +  "   <option value='Coburg'>Coburg</option>"
-         +  "   <option value='Kempten'>Kempten</option>"
-         +  "   <option value='Landshut'>Landshut</option>"
-         +  "   <option value='Muenchen'>München</option>"
-         +  "   <option value='Nuernberg'>Nürnberg</option>"
-         +  "   <option value='Passau'>Passau</option>"
-         +  "   <option value='Regensburg'>Regensburg</option>"
-         +  "   <option value='Rosenheim'>Rosenheim</option>"
-         +  "   <option value='Wuerzburg'>Würzburg</option>"
-         +  "</optgroup>"
-         +  "<optgroup label='Brandenburg/Berlin'>"
-         +  "   <option value='Berlin'>Berlin</option>"
-         +  "   <option value='Cottbus'>Cottbus</option>"
-         +  "   <option value='Wittenberg'>Wittenberge</option>"
-         +  "</optgroup>"
-         +  "<optgroup label='Hessen'>"
-         +  "   <option value='Frankfurt'>Frankfurt am Main</option>"
-         +  "   <option value='Fulda'>Fulda</option>"
-         +  "   <option value='Giessen'>Giessen</option>"
-         +  "   <option value='Kassel'>Kassel</option>"
-         +  "</optgroup>"
-         +  "<optgroup label='Mecklenburg-Vorpommern'>"
-         +  "   <option value='Neubrandenburg'>Neubrandenburg</option>"
-         +  "   <option value='Rostock'>Rostock</option>"
-         +  "   <option value='Schwerin'>Schwerin</option>"
-         +  "</optgroup>"
-         +  "<optgroup label='Niedersachsen/Bremen'>"
-         +  "   <option value='Bremen'>Bremen</option>"
-         +  "   <option value='Hannover'>Hannover</option>"
-         +  "   <option value='Meppen'>Meppen</option>"
-         +  "   <option value='Oldenburg'>Oldenburg</option>"
-         +  "   <option value='Osnabrueck'>Osnabrück</option>"
-         +  "   <option value='Uelzen'>Uelzen</option>"
-         +  "</optgroup>"
-         +  "<optgroup label='Nordrhein-Westfalen'>"
-         +  "   <option value='Aachen'>Aachen</option>"
-         +  "   <option value='Bielefeld'>Bielefeld</option>"
-         +  "   <option value='Dortmund'>Dortmund</option>"
-         +  "   <option value='Duesseldorf'>Düsseldorf</option>"
-         +  "   <option value='Koeln'>Köln</option>"
-         +  "   <option value='Siegen'>Siegen</option>"
-         +  "</optgroup>"
-         +  "<optgroup label='Rheinland-Pfalz/Saarland'>"
-         +  "   <option value='Kaiserslautern'>Kaiserslautern</option>"
-         +  "   <option value='Koblenz'>Koblenz</option>"
-         +  "   <option value='Mainz'>Mainz</option>"
-         +  "   <option value='Saarbruecken'>Saarbrücken</option>"
-         +  "   <option value='Trier'>Trier</option>"
-         +  "</optgroup>"
-         +  "<optgroup label='Sachsen'>"
-         +  "   <option value='Dresden'>Dresden</option>"
-         +  "   <option value='Leipzig'>Leipzig</option>"
-         +  "   <option value='Zwickau'>Zwickau</option>"
-         +  "</optgroup>"
-         +  "<optgroup label='Sachsen-Anhalt'>"
-         +  "   <option value='Magdeburg'>Magdeburg</option>"
-         +  "   <option value='Quedlinburg'>Quedlinburg</option>"
-         +  "</optgroup>"
-         +  "<optgroup label='Schleswig-Holstein/Hamburg'>"
-         +  "   <option value='Hamburg'>Hamburg</option>"
-         +  "   <option value='Husum'>Husum</option>"
-         +  "   <option value='Kiel'>Kiel</option>"
-         +  "</optgroup>"
-         +  "<optgroup label='Thüringen'>"
-         +  "   <option value='Erfurth'>Erfurt</option>"
-         +  "</optgroup>";
+'use strict';
+const city = '<optgroup label=\'Baden-Württemberg\'>'
+    + '   <option value=\'Crailsheim\'>Crailsheim</option>'
+    + '   <option value=\'Freiburg\'>Freiburg im Breisgau</option>'
+    + '   <option value=\'Karlsruhe\'>Karlsruhe</option>'
+    + '   <option value=\'Mannheim\'>Mannheim</option>'
+    + '   <option value=\'Stuttgart\'>Stuttgart</option>'
+    + '   <option value=\'Tuttlingen\'>Tuttlingen</option>'
+    + '   <option value=\'Ulm\'>Ulm</option>'
+    + '</optgroup>'
+    + '<optgroup label=\'Bayern\'>'
+    + '   <option value=\'Augsburg\'>Augsburg</option>'
+    + '   <option value=\'Bayreuth\'>Bayreuth</option>'
+    + '   <option value=\'Coburg\'>Coburg</option>'
+    + '   <option value=\'Kempten\'>Kempten</option>'
+    + '   <option value=\'Landshut\'>Landshut</option>'
+    + '   <option value=\'Muenchen\'>München</option>'
+    + '   <option value=\'Nuernberg\'>Nürnberg</option>'
+    + '   <option value=\'Passau\'>Passau</option>'
+    + '   <option value=\'Regensburg\'>Regensburg</option>'
+    + '   <option value=\'Rosenheim\'>Rosenheim</option>'
+    + '   <option value=\'Wuerzburg\'>Würzburg</option>'
+    + '</optgroup>'
+    + '<optgroup label=\'Brandenburg/Berlin\'>'
+    + '   <option value=\'Berlin\'>Berlin</option>'
+    + '   <option value=\'Cottbus\'>Cottbus</option>'
+    + '   <option value=\'Wittenberg\'>Wittenberge</option>'
+    + '</optgroup>'
+    + '<optgroup label=\'Hessen\'>'
+    + '   <option value=\'Frankfurt\'>Frankfurt am Main</option>'
+    + '   <option value=\'Fulda\'>Fulda</option>'
+    + '   <option value=\'Giessen\'>Giessen</option>'
+    + '   <option value=\'Kassel\'>Kassel</option>'
+    + '</optgroup>'
+    + '<optgroup label=\'Mecklenburg-Vorpommern\'>'
+    + '   <option value=\'Neubrandenburg\'>Neubrandenburg</option>'
+    + '   <option value=\'Rostock\'>Rostock</option>'
+    + '   <option value=\'Schwerin\'>Schwerin</option>'
+    + '</optgroup>'
+    + '<optgroup label=\'Niedersachsen/Bremen\'>'
+    + '   <option value=\'Bremen\'>Bremen</option>'
+    + '   <option value=\'Hannover\'>Hannover</option>'
+    + '   <option value=\'Meppen\'>Meppen</option>'
+    + '   <option value=\'Oldenburg\'>Oldenburg</option>'
+    + '   <option value=\'Osnabrueck\'>Osnabrück</option>'
+    + '   <option value=\'Uelzen\'>Uelzen</option>'
+    + '</optgroup>'
+    + '<optgroup label=\'Nordrhein-Westfalen\'>'
+    + '   <option value=\'Aachen\'>Aachen</option>'
+    + '   <option value=\'Bielefeld\'>Bielefeld</option>'
+    + '   <option value=\'Dortmund\'>Dortmund</option>'
+    + '   <option value=\'Duesseldorf\'>Düsseldorf</option>'
+    + '   <option value=\'Koeln\'>Köln</option>'
+    + '   <option value=\'Siegen\'>Siegen</option>'
+    + '</optgroup>'
+    + '<optgroup label=\'Rheinland-Pfalz/Saarland\'>'
+    + '   <option value=\'Kaiserslautern\'>Kaiserslautern</option>'
+    + '   <option value=\'Koblenz\'>Koblenz</option>'
+    + '   <option value=\'Mainz\'>Mainz</option>'
+    + '   <option value=\'Saarbruecken\'>Saarbrücken</option>'
+    + '   <option value=\'Trier\'>Trier</option>'
+    + '</optgroup>'
+    + '<optgroup label=\'Sachsen\'>'
+    + '   <option value=\'Dresden\'>Dresden</option>'
+    + '   <option value=\'Leipzig\'>Leipzig</option>'
+    + '   <option value=\'Zwickau\'>Zwickau</option>'
+    + '</optgroup>'
+    + '<optgroup label=\'Sachsen-Anhalt\'>'
+    + '   <option value=\'Magdeburg\'>Magdeburg</option>'
+    + '   <option value=\'Quedlinburg\'>Quedlinburg</option>'
+    + '</optgroup>'
+    + '<optgroup label=\'Schleswig-Holstein/Hamburg\'>'
+    + '   <option value=\'Hamburg\'>Hamburg</option>'
+    + '   <option value=\'Husum\'>Husum</option>'
+    + '   <option value=\'Kiel\'>Kiel</option>'
+    + '</optgroup>'
+    + '<optgroup label=\'Thüringen\'>'
+    + '   <option value=\'Erfurth\'>Erfurt</option>'
+    + '</optgroup>';
 
 if (typeof module !== 'undefined' && module.parent) {
     module.exports = {
-        city: solarwetter
+        city,
     };
 }

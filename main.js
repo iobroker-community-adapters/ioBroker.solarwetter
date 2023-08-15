@@ -165,7 +165,7 @@ function loeseDatum(body, text1) {
 
 function findeWertClearsky (body) {
     const text1 = "<td height=17 class=xl1525883 style='height:12.75pt'>clear sky:</td>"; // erstes Auftauchen
-    const text2 = "<td class=xl6525883>kWh/kWp</td>";                 // erstes Auftauchen
+    const text2 = '<td class=xl6525883>kWh/kWp</td>';                 // erstes Auftauchen
     const clearSky = erstes_erstesAuftauchen(body, text1, text2);
     logging && adapter.log.debug(`ClearSky: ${clearSky}`);
     adapter.setState(idClearSky, {ack: true, val: clearSky});                         // Wert in Objekt schreiben
