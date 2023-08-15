@@ -1,16 +1,13 @@
+const adapterName    = require('./package.json').name.split('.').pop();
 const utils = require('@iobroker/adapter-core'); // Get common adapter utils
 const axios = require('axios');
 let lang = 'de';
 
-const adapter = utils.Adapter({
-    name: 'solarwetter',
-    systemConfig: true,
-    useFormatDate: true
-});
-
 let plz;
 let city;
 let power;
+let stopTimeout;
+let adapter;
 /* removed username & password 2022/03 */
 
 const logging = false;
@@ -27,23 +24,40 @@ const idHomeClearSky = 'forecast.home.clearSky';
 const idHomeRealSkyMin = 'forecast.home.realSky_min';
 const idHomeRealSkyMax = 'forecast.home.realSky_max';
 
-adapter.on('ready', () => {
-    adapter.getForeignObject('system.config', (err, data) => {
-        if (data && data.common) {
-            lang = data.common.language;
-        }
 
-        adapter.log.debug('initializing objects');
-        main();
+function startAdapter(options) {
+    options = options || {};
 
-        setTimeout(function () {
-            adapter.log.info('force terminating adapter after 1 minute');
-            adapter.stop();
-        }, 60000);
+    Object.assign(options, {
+        systemConfig: true,
+        useFormatDate: true,
+        name: adapterName,
+        ready: () => {
+            adapter.getForeignObject('system.config', (err, data) => {
+                if (data && data.common) {
+                    lang = data.common.language;
+                }
 
+                adapter.log.debug('initializing objects');
+                main();
+
+                stopTimeout = setTimeout(() => {
+                    adapter.log.info('force terminating adapter after 1 minute');
+                    adapter.stop();
+                }, 60000);
+
+            });
+        },
+        unload: callback => {
+            stopTimeout && clearTimeout(stopTimeout);
+            stopTimeout = null;
+            callback && callback();
+        },
     });
-});
 
+    adapter = new utils.Adapter(options);
+    return adapter;
+}
 
 function readSettings() {
     plz = adapter.config.location;
@@ -73,7 +87,6 @@ function readSettings() {
         adapter.log.info(`Leistung eigene Anlage: ${power} kWp`);
     }
     adapter.setState(idHomeAnlage, parseFloat(power), true);
-
 
     leseWebseite();
 }
@@ -153,10 +166,10 @@ function loeseDatum(body, text1) {
 function findeWertClearsky (body) {
     const text1 = "<td height=17 class=xl1525883 style='height:12.75pt'>clear sky:</td>"; // erstes Auftauchen
     const text2 = "<td class=xl6525883>kWh/kWp</td>";                 // erstes Auftauchen
-    const clearsky = erstes_erstesAuftauchen(body,text1,text2);
-    logging && adapter.log.debug(`ClearSky: ${clearsky}`);
-    adapter.setState(idClearSky, {ack: true, val: clearsky});                         // Wert in Objekt schreiben
-    adapter.setState(idHomeClearSky, {ack: true, val: clearsky * power});             // Wert in Objekt schreiben
+    const clearSky = erstes_erstesAuftauchen(body, text1, text2);
+    logging && adapter.log.debug(`ClearSky: ${clearSky}`);
+    adapter.setState(idClearSky, {ack: true, val: clearSky});                         // Wert in Objekt schreiben
+    adapter.setState(idHomeClearSky, {ack: true, val: clearSky * power});             // Wert in Objekt schreiben
 }
 
 function findeWertRealskyMinimum (body) {
@@ -191,7 +204,7 @@ function leseWebseite () {
     logging && adapter.log.debug(`link to be retrieved: ${link}`);
     if (!plz || plz.length < 3) {
         adapter.log.warn('Kein PLZ-Bereich festgelegt. Adapter wird angehalten');
-        adapter.stop;
+        adapter.stop();
     }
     try {
         axios(link)
@@ -211,4 +224,13 @@ function leseWebseite () {
 function main() {
     readSettings();
     adapter.log.info('objects written');
+}
+
+// If started as allInOne mode => return function to create instance
+// @ts-ignore
+if (module.parent) {
+    module.exports = startAdapter;
+} else {
+    // or start the instance directly
+    startAdapter();
 }

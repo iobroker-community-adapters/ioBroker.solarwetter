@@ -42,6 +42,7 @@
       "Pix"
     ],
     "license": "MIT",
+    "enabled": true,
     "readme": "https://github.com/iobroker-community-adapters/ioBroker.solarwetter/blob/master/README.md",
     "icon": "solarwetter.png",
     "extIcon": "https://raw.githubusercontent.com/iobroker-community-adapters/ioBroker.solarwetter/master/admin/solarwetter.png",
@@ -54,8 +55,8 @@
     "type": "weather"
   },
   "native": {
-    "location": "select",
-    "prognoseort": "select",
+    "location": "",
+    "prognoseort": "",
     "power": 0
   },
   "objects": [],

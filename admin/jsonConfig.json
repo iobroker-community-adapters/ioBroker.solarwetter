@@ -713,7 +713,7 @@
       "size": 4,
       "text": "4 days forecast"
     },
-    "city": {
+    "prognoseort": {
       "label": "City",
       "type": "select",
       "noTranslation": true,
@@ -783,19 +783,19 @@
               "value": "Nuernberg"
             },
             {
-              "value": "Passau",
+              "label": "Passau",
               "value": "Passau"
             },
             {
-              "value": "Regensburg",
+              "label": "Regensburg",
               "value": "Regensburg"
             },
             {
-              "value": "Rosenheim",
+              "label": "Rosenheim",
               "value": "Rosenheim"
             },
             {
-              "value": "Wuerzburg",
+              "label": "Wuerzburg",
               "value": "Würzburg"
             }
           ]
@@ -804,15 +804,15 @@
           "label": "Brandenburg/Berlin",
           "items": [
             {
-              "value": "Berlin",
+              "label": "Berlin",
               "value": "Berlin"
             },
             {
-              "value": "Cottbus",
+              "label": "Cottbus",
               "value": "Cottbus"
             },
             {
-              "value": "Wittenberg",
+              "label": "Wittenberg",
               "value": "Wittenberge"
             }
           ]
@@ -822,18 +822,18 @@
           "items": [
             {
               "value": "Frankfurt",
-              "value": "Frankfurt am Main"
+              "label": "Frankfurt am Main"
             },
             {
-              "value": "Fulda",
+              "label": "Fulda",
               "value": "Fulda"
             },
             {
-              "value": "Giessen",
+              "label": "Giessen",
               "value": "Giessen"
             },
             {
-              "value": "Kassel",
+              "label": "Kassel",
               "value": "Kassel"
             }
           ]
@@ -842,15 +842,15 @@
           "label": "Mecklenburg-Vorpommern",
           "items": [
             {
-              "value": "Neubrandenburg",
+              "label": "Neubrandenburg",
               "value": "Neubrandenburg"
             },
             {
-              "value": "Rostock",
+              "label": "Rostock",
               "value": "Rostock"
             },
             {
-              "value": "Schwerin",
+              "label": "Schwerin",
               "value": "Schwerin"
             }
           ]
@@ -859,27 +859,27 @@
           "label": "Niedersachsen/Bremen",
           "items": [
             {
-              "value": "Bremen",
+              "label": "Bremen",
               "value": "Bremen"
             },
             {
-              "value": "Hannover",
+              "label": "Hannover",
               "value": "Hannover"
             },
             {
-              "value": "Meppen",
+              "label": "Meppen",
               "value": "Meppen"
             },
             {
-              "value": "Oldenburg",
+              "label": "Oldenburg",
               "value": "Oldenburg"
             },
             {
-              "value": "Osnabrueck",
+              "label": "Osnabrueck",
               "value": "Osnabrück"
             },
             {
-              "value": "Uelzen",
+              "label": "Uelzen",
               "value": "Uelzen"
             }
           ]
@@ -888,27 +888,27 @@
           "label": "Nordrhein-Westfalen",
           "items": [
             {
-              "value": "Aachen",
+              "label": "Aachen",
               "value": "Aachen"
             },
             {
-              "value": "Bielefeld",
+              "label": "Bielefeld",
               "value": "Bielefeld"
             },
             {
-              "value": "Dortmund",
+              "label": "Dortmund",
               "value": "Dortmund"
             },
             {
-              "value": "Duesseldorf",
+              "label": "Duesseldorf",
               "value": "Düsseldorf"
             },
             {
-              "value": "Koeln",
+              "label": "Koeln",
               "value": "Köln"
             },
             {
-              "value": "Siegen",
+              "label": "Siegen",
               "value": "Siegen"
             }
           ]
@@ -917,23 +917,23 @@
           "label": "Rheinland-Pfalz/Saarland",
           "items": [
             {
-              "value": "Kaiserslautern",
+              "label": "Kaiserslautern",
               "value": "Kaiserslautern"
             },
             {
-              "value": "Koblenz",
+              "label": "Koblenz",
               "value": "Koblenz"
             },
             {
-              "value": "Mainz",
+              "label": "Mainz",
               "value": "Mainz"
             },
             {
-              "value": "Saarbruecken",
+              "label": "Saarbruecken",
               "value": "Saarbrücken"
             },
             {
-              "value": "Trier",
+              "label": "Trier",
               "value": "Trier"
             }
           ]
@@ -942,15 +942,15 @@
           "label": "Sachsen",
           "items": [
             {
-              "value": "Dresden",
+              "label": "Dresden",
               "value": "Dresden"
             },
             {
-              "value": "Leipzig",
+              "label": "Leipzig",
               "value": "Leipzig"
             },
             {
-              "value": "Zwickau",
+              "label": "Zwickau",
               "value": "Zwickau"
             }
           ]
@@ -959,11 +959,11 @@
           "label": "Sachsen-Anhalt",
           "items": [
             {
-              "value": "Magdeburg",
+              "label": "Magdeburg",
               "value": "Magdeburg"
             },
             {
-              "value": "Quedlinburg",
+              "label": "Quedlinburg",
               "value": "Quedlinburg"
             }
           ]
@@ -972,15 +972,15 @@
           "label": "Schleswig-Holstein/Hamburg",
           "items": [
             {
-              "value": "Hamburg",
+              "label": "Hamburg",
               "value": "Hamburg"
             },
             {
-              "value": "Husum",
+              "label": "Husum",
               "value": "Husum"
             },
             {
-              "value": "Kiel",
+              "label": "Kiel",
               "value": "Kiel"
             }
           ]
@@ -989,7 +989,7 @@
           "label": "Thüringen",
           "items": [
             {
-              "value": "Erfurth",
+              "label": "Erfurth",
               "value": "Erfurt"
             }
           ]

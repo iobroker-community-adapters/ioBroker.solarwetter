@@ -60,6 +60,13 @@
     "url": "https://github.com/iobroker-community-adapters/ioBroker.solarwetter/issues"
   },
   "main": "main.js",
+  "files": [
+    "admin/",
+    "img/",
+    "LICENSE",
+    "main.js",
+    "io-package.json"
+  ],
   "scripts": {
     "test:js": "mocha --config test/mocharc.custom.json \"{!(node_modules|test)/**/*.test.js,*.test.js,test/**/test!(PackageFiles|Startup).js}\"",
     "test:package": "mocha test/package --exit",
