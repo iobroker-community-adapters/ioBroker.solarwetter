@@ -13,6 +13,19 @@
       "ru": "prognostizierter Solarstrom Tagesertrag solar-wetter.com - translate to russian, please"
     },
     "news": {
+      "1.1.3": {
+        "en": "Adjusted for Website Changes - removal of authentication\nAdded compact mode and JSON config",
+        "de": "Anpassung an Webseitenänderungen - Entfernung der Authentifizierung\nKompakter Modus und JSON config hinzugefügt",
+        "ru": "Настройка для изменений сайта - удаление аутентификации\nДобавлен компактный режим и JSON config",
+        "pt": "Ajustado para Alterações de Website - remoção de autenticação\nAdicionado modo compacto e JSON config",
+        "nl": "Verwijdering van authenticatie\nVoeg compact mode toe en JSON configuur",
+        "fr": "Ajusté pour les changements de site Web - suppression de l'authentification\nAjout du mode compact et de la configuration JSON",
+        "it": "Regolato per le modifiche del sito web - rimozione dell'autenticazione\nAggiunta modalità compatta e JSON config",
+        "es": "Adaptado para Cambios Web - eliminación de autenticación\nModo compacto añadido y config JSON",
+        "pl": "Adjusted for Website Changes (ang.)\nW trybie kompaktowym i konfiguracji JSON",
+        "uk": "Налаштування змін сайту - видалення автентифікації\nДодано компактний режим та налаштування JSON",
+        "zh-cn": "对网站变化的调整-撤销核证\n增加协约模式和联合协商会"
+      },
       "1.0.0": {
         "en": "End of beta. Nodejs version 4 or higher required",
         "de": "Ende der Betaphase. Nodejs Version 4 oder höher nötig",
@@ -24,7 +37,7 @@
         "ru": "Username & password Login provided"
       }
     },
-    "version": "1.1.2",
+    "version": "1.1.3",
     "mode": "schedule",
     "schedule": "17 5 * * *",
     "platform": "Javascript/Node.js",
