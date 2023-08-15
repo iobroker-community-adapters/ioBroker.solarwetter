@@ -73,7 +73,7 @@ The adapter starts once a day.
 * (bluefox) Added compact mode and JSON config
 
 ### 1.0.0 (2017-10-15)
-* (pix) End of beta, Nodejs 4 or higher required
+* (pix) End of beta, Node.js 4 or higher required
 
 ### 0.3.0 (2017-05-28)
 * (pix) Login with website password & username
