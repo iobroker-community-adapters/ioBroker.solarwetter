@@ -69,7 +69,7 @@ The adapter starts once a day.
 
 <!-- ### **WORK IN PROGRESS** -->
 ## Changelog
-### **WORK IN PROGRESS**
+### 1.1.0 (2023-08-15)
 * (motuditli) Adjusted for Website Changes - removal of authentication
 * (bluefox) Added compact mode and JSON config
 
@@ -77,7 +77,7 @@ The adapter starts once a day.
 * (pix) End of beta, Nodejs 4 or higher required
 
 ### 0.3.0 (2017-05-28)
-* (pix) Login with website password & username  
+* (pix) Login with website password & username
 
 ### 0.2.0 (2017-01-05)
 * (pix) Travis CI testing added
@@ -138,4 +138,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ---
-*Logo is partly crafted by CHALLENGER* :+1: 
+*Logo is partly crafted by CHALLENGER* :+1:
