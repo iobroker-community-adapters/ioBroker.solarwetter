@@ -45,31 +45,33 @@ The adapter starts once a day.
 
 ##  Datenpunkte / Datapoints
 
-solarwetter.0.forecast.__clearSky__ (*value*)
+`solarwetter.0.forecast.__clearSky__` (*value*)
 
-solarwetter.0.forecast.__realSky_min__(*value*)
+`solarwetter.0.forecast.__realSky_min__` (*value*)
 
-solarwetter.0.forecast.__realSky_max__ (*value*)
+`solarwetter.0.forecast.__realSky_max__` (*value*)
 
-solarwetter.0.forecast.__Datum__  (*string, no timestamp*)
+`solarwetter.0.forecast.__Datum__`  (*string, no timestamp*)
 
-solarwetter.0.forecast.__Region__ (*value*)
+`solarwetter.0.forecast.__Region__` (*value*)
 
-solarwetter.0.forecast.home.__clearSky__ (*value*)
+`solarwetter.0.forecast.home.__clearSky__` (*value*)
 
-solarwetter.0.forecast.home.__realSky_min__(*value*)
+`solarwetter.0.forecast.home.__realSky_min__` (*value*)
 
-solarwetter.0.forecast.home.__realSky_max__ (*value*)
+`solarwetter.0.forecast.home.__realSky_max__` (*value*)
 
-solarwetter.0.forecast.home.__Leistung__ (*value*)
+`solarwetter.0.forecast.home.__Leistung__` (*value*)
 
-solarwetter.0.forecast.chart.__city__ (*value*)
+`solarwetter.0.forecast.chart.__city__` (*value*)
 
-solarwetter.0.forecast.chart.__url__ (*value*)
+`solarwetter.0.forecast.chart.__url__` (*value*)
 
+<!-- ### **WORK IN PROGRESS** -->
 ## Changelog
 ### **WORK IN PROGRESS**
 * (motuditli) Adjusted for Website Changes - removal of authentication
+* (bluefox) Added compact mode and JSON config
 
 ### 1.0.0 (2017-10-15)
 * (pix) End of beta, Nodejs 4 or higher required
