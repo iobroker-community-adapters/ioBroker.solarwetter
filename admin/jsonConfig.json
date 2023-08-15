@@ -8,6 +8,7 @@
       "text": "Location"
     },
     "location": {
+      "newLine": true,
       "type": "select",
       "label": "Region",
       "noTranslation": true,
@@ -689,17 +690,20 @@
       "lg": 4
     },
     "_copyright": {
+      "newLine": true,
       "type": "staticText",
       "sm": 12,
       "text": "Data provided by solar-wetter.com"
     },
     "_solar": {
+      "newLine": true,
       "type": "header",
       "sm": 12,
       "size": 4,
       "text": "Solar plant"
     },
     "power": {
+      "newLine": true,
       "label": "Power of your device",
       "type": "text",
       "sm": 12,
@@ -708,12 +712,14 @@
       "help": "kWp"
     },
     "_4day": {
+      "newLine": true,
       "type": "header",
       "sm": 12,
       "size": 4,
       "text": "4 days forecast"
     },
     "prognoseort": {
+      "newLine": true,
       "label": "City",
       "type": "select",
       "noTranslation": true,
