@@ -1,1 +1,10 @@
-{}
+{
+  "Location": "地点",
+  "Region": "地区",
+  "Data provided by solar-wetter.com": "数据由solar-wetter.com提供",
+  "Solar plant": "太阳能发电厂",
+  "Power of your device": "您设备的功率",
+  "kWp": "功率",
+  "4 days forecast": "4天预报",
+  "City": "城市"
+}

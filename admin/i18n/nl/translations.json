@@ -1,1 +1,10 @@
-{}
+{
+  "Location": "Plaats",
+  "Region": "Regio",
+  "Data provided by solar-wetter.com": "Gegevens verstrekt door solar-wetter.com",
+  "Solar plant": "Zonne-installatie",
+  "Power of your device": "Kracht van uw apparaat",
+  "kWp": "kWp",
+  "4 days forecast": "4 dagen voorspelling",
+  "City": "Stad"
+}

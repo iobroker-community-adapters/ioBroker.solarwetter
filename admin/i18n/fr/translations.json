@@ -1,1 +1,10 @@
-{}
+{
+  "Location": "Emplacement",
+  "Region": "Région",
+  "Data provided by solar-wetter.com": "Données fournies par solar-wetter.com",
+  "Solar plant": "Centrale solaire",
+  "Power of your device": "Puissance de votre appareil",
+  "kWp": "kWc",
+  "4 days forecast": "prévisions à 4 jours",
+  "City": "Ville"
+}
