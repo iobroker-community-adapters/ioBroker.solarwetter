@@ -68,7 +68,7 @@ The adapter starts once a day.
 `solarwetter.0.forecast.chart.__url__` (*value*)
 
 <!-- ### **WORK IN PROGRESS** -->
-### **WORK IN PROGRESS**
+### 1.1.5 (2023-08-15)
 * (motuditli) Adjusted for Website Changes - removal of authentication
 * (bluefox) Added compact mode and JSON config
 
