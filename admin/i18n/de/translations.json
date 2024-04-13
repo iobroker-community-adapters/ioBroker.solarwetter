@@ -1,10 +1,10 @@
 {
-  "Location": "Standort",
-  "Region": "Region",
-  "Data provided by solar-wetter.com": "Daten bereitgestellt von solar-wetter.com",
-  "Solar plant": "Solaranlage",
-  "Power of your device": "Leistung Ihres Geräts",
-  "kWp": "kWp",
-  "4 days forecast": "4-Tage-Vorhersage",
-  "City": "Stadt"
+    "Location": "Standort",
+    "Region": "Region",
+    "Data provided by solar-wetter.com": "Daten bereitgestellt von solar-wetter.com",
+    "Solar plant": "Solaranlage",
+    "Power of your device": "Leistung Ihres Geräts",
+    "kWp": "kWp",
+    "4 days forecast": "4-Tage-Vorhersage",
+    "City": "Stadt"
 }

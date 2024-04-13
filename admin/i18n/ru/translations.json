@@ -1,10 +1,10 @@
 {
-  "Location": "Расположение",
-  "Region": "Область",
-  "Data provided by solar-wetter.com": "Данные предоставлены www.solar-wetter.com.",
-  "Solar plant": "Солнечная электростанция",
-  "Power of your device": "Мощность вашего устройства",
-  "kWp": "кВт",
-  "4 days forecast": "прогноз на 4 дня",
-  "City": "Город"
+    "Location": "Расположение",
+    "Region": "Область",
+    "Data provided by solar-wetter.com": "Данные предоставлены www.solar-wetter.com.",
+    "Solar plant": "Солнечная электростанция",
+    "Power of your device": "Мощность вашего устройства",
+    "kWp": "кВт",
+    "4 days forecast": "прогноз на 4 дня",
+    "City": "Город"
 }

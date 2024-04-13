@@ -19,23 +19,55 @@
       "1.0.0": {
         "en": "End of beta. Nodejs version 4 or higher required",
         "de": "Ende der Betaphase. Nodejs Version 4 oder höher nötig",
-        "ru": "End of beta. Nodejs version 4 or higher required"
+        "ru": "End of beta. Nodejs version 4 or higher required",
+        "pt": "Fim do beta. É necessário Nodejs versão 4 ou superior",
+        "nl": "Einde van de bèta. Nodejs versie 4 of hoger vereist",
+        "fr": "Fin de la bêta. Nodejs version 4 ou supérieure requise",
+        "it": "Fine della beta. È richiesta la versione 4 di Nodejs o successiva",
+        "es": "Fin de la beta. Se requiere Nodejs versión 4 o superior",
+        "pl": "Koniec bety. Wymagana wersja Nodejs 4 lub wyższa",
+        "uk": "Кінець бета-версії. Потрібна версія Nodejs 4 або вище",
+        "zh-cn": "测试版结束。需要 Nodejs 版本 4 或更高版本"
       },
       "0.3.0": {
         "en": "Username & password Login provided",
         "de": "Login mit Benutzer & Passwort",
-        "ru": "Username & password Login provided"
+        "ru": "Username & password Login provided",
+        "pt": "Nome de usuário e senha Login fornecido",
+        "nl": "Gebruikersnaam en wachtwoord Login verstrekt",
+        "fr": "Nom d'utilisateur et mot de passe Connexion fournie",
+        "it": "Nome utente e password Accesso fornito",
+        "es": "Nombre de usuario y contraseña Inicio de sesión proporcionado",
+        "pl": "Nazwa użytkownika i hasło Podano login",
+        "uk": "Ім'я користувача та пароль Вхід надається",
+        "zh-cn": "提供用户名和密码登录"
       }
-    },    
+    },
     "titleLang": {
       "en": "Solarwetter",
       "de": "Solarwetter",
-      "ru": "Solarwetter"
+      "ru": "Solarwetter",
+      "pt": "Solarwetter",
+      "nl": "Zonnewetter",
+      "fr": "Solaire plus humide",
+      "it": "Solarwetter",
+      "es": "mojador solar",
+      "pl": "Słonecznie",
+      "uk": "Solarwetter",
+      "zh-cn": "太阳能湿润剂"
     },
     "desc": {
       "en": "prognostizierter Solarstrom Tagesertrag solar-wetter.com",
       "de": "Solar Power Forecast solar-wetter.com",
-      "ru": "prognostizierter Solarstrom Tagesertrag solar-wetter.com - translate to russian, please"
+      "ru": "prognostizierter Solarstrom Tagesertrag solar-wetter.com - translate to russian, please",
+      "pt": "prognóstico Solarstrom Tagesertrag solar-wetter.com",
+      "nl": "prognostizierter Solarstrom Tagesertrag solar-wetter.com",
+      "fr": "prognostizierter Solarstrom Tagesertrag solar-wetter.com",
+      "it": "prognostizierter Solarstrom Tagesertrag solar-wetter.com",
+      "es": "pronosticador Solarstrom Tagesertrag solar-wetter.com",
+      "pl": "prognostizierter Solarstrom Tagesertrag solar-wetter.com",
+      "uk": "prognostizierter Solarstrom Tagesertrag solar-wetter.com",
+      "zh-cn": "预测 Solarstrom Tagesertrag Solar-wetter.com"
     },
     "authors": [
       "Pix"
@@ -58,7 +90,7 @@
     "extIcon": "https://raw.githubusercontent.com/iobroker-community-adapters/ioBroker.solarwetter/master/admin/solarwetter.png",
     "readme": "https://github.com/iobroker-community-adapters/ioBroker.solarwetter/blob/master/README.md",
     "loglevel": "info",
-    "tier":2,
+    "tier": 2,
     "mode": "schedule",
     "schedule": "17 5 * * *",
     "allowInit": true,
@@ -71,12 +103,12 @@
     },
     "dependencies": [
       {
-          "js-controller": ">=5.0.0"
+        "js-controller": ">=5.0.0"
       }
     ],
     "globalDependencies": [
       {
-          "admin": ">=5.1.13"
+        "admin": ">=5.1.13"
       }
     ]
   },
