@@ -1,17 +1,7 @@
 {
   "common": {
     "name": "solarwetter",
-    "title": "Solarwetter",
-    "titleLang": {
-      "en": "Solarwetter",
-      "de": "Solarwetter",
-      "ru": "Solarwetter"
-    },
-    "desc": {
-      "en": "prognostizierter Solarstrom Tagesertrag solar-wetter.com",
-      "de": "Solar Power Forecast solar-wetter.com",
-      "ru": "prognostizierter Solarstrom Tagesertrag solar-wetter.com - translate to russian, please"
-    },
+    "version": "1.1.5",
     "news": {
       "1.1.5": {
         "en": "Adjusted for Website Changes - removal of authentication\nAdded compact mode and JSON config",
@@ -36,12 +26,20 @@
         "de": "Login mit Benutzer & Passwort",
         "ru": "Username & password Login provided"
       }
+    },    
+    "titleLang": {
+      "en": "Solarwetter",
+      "de": "Solarwetter",
+      "ru": "Solarwetter"
     },
-    "version": "1.1.5",
-    "mode": "schedule",
-    "schedule": "17 5 * * *",
-    "platform": "Javascript/Node.js",
-    "loglevel": "info",
+    "desc": {
+      "en": "prognostizierter Solarstrom Tagesertrag solar-wetter.com",
+      "de": "Solar Power Forecast solar-wetter.com",
+      "ru": "prognostizierter Solarstrom Tagesertrag solar-wetter.com - translate to russian, please"
+    },
+    "authors": [
+      "Pix"
+    ],
     "keywords": [
       "solar",
       "solar-wetter",
@@ -50,23 +48,37 @@
       "pix",
       "weather"
     ],
-    "main": "main.js",
-    "authors": [
-      "Pix"
-    ],
-    "license": "MIT",
-    "enabled": true,
-    "compact": true,
-    "readme": "https://github.com/iobroker-community-adapters/ioBroker.solarwetter/blob/master/README.md",
+    "licenseInformation": {
+      "license": "MIT",
+      "type": "free"
+    },
+    "platform": "Javascript/Node.js",
     "icon": "solarwetter.png",
+    "enabled": true,
     "extIcon": "https://raw.githubusercontent.com/iobroker-community-adapters/ioBroker.solarwetter/master/admin/solarwetter.png",
+    "readme": "https://github.com/iobroker-community-adapters/ioBroker.solarwetter/blob/master/README.md",
+    "loglevel": "info",
+    "tier":2,
+    "mode": "schedule",
+    "schedule": "17 5 * * *",
     "allowInit": true,
+    "type": "weather",
+    "compact": true,
     "connectionType": "cloud",
     "dataSource": "poll",
     "adminUI": {
       "config": "json"
     },
-    "type": "weather"
+    "dependencies": [
+      {
+          "js-controller": "5.0.0"
+      }
+    ],
+    "globalDependencies": [
+      {
+          "admin": ">=5.1.13"
+      }
+    ]
   },
   "native": {
     "location": "",
