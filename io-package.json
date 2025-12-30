@@ -83,7 +83,8 @@
       "zh-cn": "预测 Solarstrom Tagesertrag Solar-wetter.com"
     },
     "authors": [
-      "Pix"
+      "Pix",
+      "iobroker-community-adapters <iobroker-community-adapters@gmx.de>"
     ],
     "keywords": [
       "solar",
@@ -116,12 +117,12 @@
     },
     "dependencies": [
       {
-        "js-controller": ">=5.0.0"
+        "js-controller": ">=6.0.11"
       }
     ],
     "globalDependencies": [
       {
-        "admin": ">=5.1.13"
+        "admin": ">=7.6.17"
       }
     ]
   },
